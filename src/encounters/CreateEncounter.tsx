@@ -4,7 +4,7 @@ import { StyledTableCell, StyledTableRow } from "../components/Table";
 import { calculateAdjustedXP, getXPDifficultyForLevel, XPDificulty } from "./EncountersGenerator";
 import { getMonsterDataFor, IMonsterData, monsterData } from "./Monsters";
 
-
+//https://blackcitadelrpg.com/challenge-rating-5e/
 const CreateEncounter = () => {
 
   const [monsterAutocompleteValue, setMonsterAutocompleteValue] = useState<IMonsterData>();
