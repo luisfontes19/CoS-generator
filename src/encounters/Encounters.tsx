@@ -122,7 +122,7 @@ const Encounters = () => {
                               #{j + 1} - {d.name}{d.gender ? ` (${d.gender.substring(0, 1).toUpperCase()}) ` : " "}
                               <a href={d.reference} target="_blank" rel="noreferrer"><b>{d.type}</b></a>
                               {
-                                d.hp > 0 ? <TextField style={{ width: "50px", marginLeft: "5px" }} label="HP" size="small" defaultValue={d.hp} /> : ""
+                                d.hp > 0 ? <TextField style={{ width: "70px", marginLeft: "5px" }} label="HP" size="small" defaultValue={d.hp} /> : ""
                               }
                             </div>
                           )
