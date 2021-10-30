@@ -1,0 +1,22 @@
+{
+  "files": {
+    "main.js": "/CoS-generator/static/js/main.f0df326a.chunk.js",
+    "main.js.map": "/CoS-generator/static/js/main.f0df326a.chunk.js.map",
+    "runtime-main.js": "/CoS-generator/static/js/runtime-main.da21de77.js",
+    "runtime-main.js.map": "/CoS-generator/static/js/runtime-main.da21de77.js.map",
+    "static/js/2.ddc6825a.chunk.js": "/CoS-generator/static/js/2.ddc6825a.chunk.js",
+    "static/js/2.ddc6825a.chunk.js.map": "/CoS-generator/static/js/2.ddc6825a.chunk.js.map",
+    "static/js/3.9ad9f988.chunk.js": "/CoS-generator/static/js/3.9ad9f988.chunk.js",
+    "static/js/3.9ad9f988.chunk.js.map": "/CoS-generator/static/js/3.9ad9f988.chunk.js.map",
+    "index.html": "/CoS-generator/index.html",
+    "static/js/2.ddc6825a.chunk.js.LICENSE.txt": "/CoS-generator/static/js/2.ddc6825a.chunk.js.LICENSE.txt",
+    "static/media/battle.1767d2e1.png": "/CoS-generator/static/media/battle.1767d2e1.png",
+    "static/media/castle.f98ce2e2.png": "/CoS-generator/static/media/castle.f98ce2e2.png",
+    "static/media/house.4d25ebc0.png": "/CoS-generator/static/media/house.4d25ebc0.png"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.da21de77.js",
+    "static/js/2.ddc6825a.chunk.js",
+    "static/js/main.f0df326a.chunk.js"
+  ]
+}
