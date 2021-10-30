@@ -12,9 +12,11 @@ const CreateEncounter = () => {
   const [finalXP, setFinalXP] = useState(0);
   const [recommendedCombatXP, setRecommendedCombatXP] = useState<any>({});
   const [partyLevels, setPartyLevels] = useState("3,3,3");
+  const [difficulty, setDifficulty] = useState("");
 
 
   useEffect(() => calculateXP(), [monsters])
+  useEffect(() => calculateDifficulty(), [finalXP])
   useEffect(() => {
     try {
       let difficulties = { 0: 0, 1: 0, 2: 0, 3: 0 };
@@ -50,7 +52,7 @@ const CreateEncounter = () => {
   }
 
   const calculateXP = () => setFinalXP(calculateAdjustedXP(monsters))
-  const difficulty = () => {
+  const calculateDifficulty = () => {
     let diff = "";
     if (finalXP >= recommendedCombatXP[XPDificulty.DEADLY])
       diff = "Deadly";
@@ -61,7 +63,7 @@ const CreateEncounter = () => {
     else if (finalXP >= recommendedCombatXP[XPDificulty.EASY])
       diff = "EASY";
 
-    return diff;
+    setDifficulty(diff);
   }
 
 
@@ -80,7 +82,7 @@ const CreateEncounter = () => {
           <Button onClick={onMonsterAddClick} variant="contained">Add</Button>
         </div>
 
-        Combat XP: {finalXP} {difficulty()}
+        Combat XP: {finalXP} {difficulty}
 
         <TableContainer component={Paper}>
           <Table sx={{ minWidth: 700 }} aria-label="customized table">
