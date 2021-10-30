@@ -125,7 +125,7 @@ export const generateVillageOfBaroviaHouseEncounter = (n?: number) => {
     case 4: case 5: case 6: case 7: case 8:
       return generateEncounter(MonsterType.SwarmofRats, 2, DiceType.d4);
     case 17: case 18: case 19: case 20:
-      return generateEncounter(MonsterType.Strahd, 2, DiceType.d4);
+      return generateEncounter(MonsterType.StrahdZombie, 2, DiceType.d4);
     default:
       return generateHouseOccupants();
   }
