@@ -32,7 +32,7 @@ const App = () => {
       <CssBaseline />
       <div className="App">
         <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
-          <Tabs value={value} onChange={handleChange} aria-label="basic tabs example">
+          <Tabs value={value} onChange={handleChange} variant="scrollable" scrollButtons="auto" allowScrollButtonsMobile indicatorColor="primary">
             <Tab label="Encounter Generator" />
             <Tab label="Name Generator" />
             <Tab label="Fortunes Of Ravenloft" />

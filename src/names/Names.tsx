@@ -38,9 +38,9 @@ const Names = () => {
   return (
     <div >
       <Grid container spacing={2}>
-        <Grid item xs={8}>
+        <Grid item md={8} sm={12} xs={12} order={{ md: 1, sm: 2, xs: 2 }}>
           <TableContainer component={Paper}>
-            <Table sx={{ minWidth: 700 }} aria-label="customized table">
+            <Table style={{ width: '100%' }}>
               <TableHead>
                 <TableRow>
                   <StyledTableCell>Name</StyledTableCell>
@@ -58,7 +58,7 @@ const Names = () => {
             </Table>
           </TableContainer>
         </Grid>
-        <Grid item xs={4}>
+        <Grid item md={4} sm={12} xs={12} order={{ md: 2, sm: 1, xs: 1 }}>
           <Paper style={styles.papper}>
             <FormControl fullWidth style={{ marginBottom: "20px" }}>
               <InputLabel id="name-type-label">Name Type</InputLabel>

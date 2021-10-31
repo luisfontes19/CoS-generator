@@ -97,9 +97,9 @@ const Encounters = () => {
       </div>
 
       <Grid container spacing={2}>
-        <Grid item xs={8}>
+        <Grid item md={8} sm={12} xs={12} order={{ md: 1, sm: 2, xs: 2 }}>
           <TableContainer component={Paper}>
-            <Table sx={{ minWidth: 700 }} aria-label="customized table">
+            <Table aria-label="customized table">
               <TableHead>
                 <TableRow>
                   <StyledTableCell>Roll</StyledTableCell>
@@ -136,17 +136,17 @@ const Encounters = () => {
           </TableContainer>
         </Grid>
 
-        <Grid item xs={4}>
+        <Grid item md={4} sm={12} xs={12} order={{ md: 2, sm: 1, xs: 1 }}>
           <Paper style={styles.paper}>
             <Grid container spacing={2}>
-              <Grid item xs={6}>
+              <Grid item md={6}>
 
                 <ToggleButtonGroup value={dayTimeToggle ? "day" : "night"} exclusive onChange={onDayTimeToggle}>
                   <ToggleButton value="day">Day</ToggleButton>
                   <ToggleButton value="night" >Night</ToggleButton>
                 </ToggleButtonGroup>
               </Grid>
-              <Grid item xs={6}> <ToggleButtonGroup value={roadEncounter ? "road" : "wild"} exclusive onChange={onRoadToggle}>
+              <Grid item md={6}> <ToggleButtonGroup value={roadEncounter ? "road" : "wild"} exclusive onChange={onRoadToggle}>
                 <ToggleButton value="road">Road</ToggleButton>
                 <ToggleButton value="wild" >Wild</ToggleButton>
               </ToggleButtonGroup>

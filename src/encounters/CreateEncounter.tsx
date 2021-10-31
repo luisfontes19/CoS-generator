@@ -76,7 +76,7 @@ const CreateEncounter = () => {
 
   return <div>
     <Grid container spacing={2}>
-      <Grid item xs={8}>
+      <Grid item md={8} sm={12} xs={12} order={{ md: 1, sm: 2, xs: 2 }}>
         <div style={{ display: "flex" }}>
           <SearchMonsterBox />
           <Button onClick={onMonsterAddClick} variant="contained">Add</Button>
@@ -109,7 +109,7 @@ const CreateEncounter = () => {
           </Table>
         </TableContainer>
       </Grid>
-      <Grid item xs={4}>
+      <Grid item md={8} sm={12} xs={12} order={{ md: 2, sm: 1, xs: 1 }}>
         <div>Comma seperated char levels</div>
         <TextField value={partyLevels} fullWidth onChange={onPartyLevelsChange} />
 
