@@ -21,8 +21,9 @@ const styles = {
   paper: {
     padding: "30px"
   },
-  flex: {
+  encountersButtonContainer: {
     display: "flex",
+    overflow: "auto"
   },
   flexItem: {
     marginRight: "10px"
@@ -89,7 +90,7 @@ const Encounters = () => {
 
   return (
     <div>
-      <div style={styles.flex}>
+      <div style={styles.encountersButtonContainer}>
         <div style={styles.flexItem}><FeatureButton icon={BattleImage} text="Outside Encounter" onClick={outsideEncounterClick} /></div>
         <div style={styles.flexItem}><FeatureButton icon={HouseImage} text="Village of Barovia House" onClick={baroviaVillageHouseClick} /></div>
         <div style={styles.flexItem}><FeatureButton icon={CastleImage} text="Castle Ravenloft" onClick={castleRavenloftClick} /></div>
@@ -102,8 +103,8 @@ const Encounters = () => {
             <Table aria-label="customized table">
               <TableHead>
                 <TableRow>
-                  <StyledTableCell>Roll</StyledTableCell>
-                  <StyledTableCell>Day/Night</StyledTableCell>
+                  <StyledTableCell sx={{ display: { xs: 'none', sm: 'none' } }} className="hidden-small">Roll</StyledTableCell>
+                  <StyledTableCell sx={{ display: { xs: 'none', sm: 'none' } }} className="hidden-small">Day/Night</StyledTableCell>
                   <StyledTableCell>Place</StyledTableCell>
                   <StyledTableCell align="right">Details</StyledTableCell>
                 </TableRow>
@@ -111,8 +112,8 @@ const Encounters = () => {
               <TableBody>
                 {rows.map((row, i) => (
                   <StyledTableRow key={i}>
-                    <StyledTableCell scope="row">{row.roll}</StyledTableCell>
-                    <StyledTableCell>{row.day ? "Day" : "Night"}</StyledTableCell>
+                    <StyledTableCell sx={{ display: { xs: 'none', sm: 'none' } }} className="hidden-small">{row.roll}</StyledTableCell>
+                    <StyledTableCell sx={{ display: { xs: 'none', sm: 'none' } }} className="hidden-small">{row.day ? "Day" : "Night"}</StyledTableCell>
                     <StyledTableCell>{row.place}</StyledTableCell>
                     <StyledTableCell align="right">
                       {
