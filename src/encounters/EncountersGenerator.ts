@@ -1,5 +1,5 @@
 import { DiceType, random, roll } from '../DiceRoll';
-import { barovianFamilyNames, generateFemaleBorovianName, generateMaleBorovianName } from '../names/NameUtils';
+import { Gender, generateFemaleName, generateMaleName, namesArray, NameType } from '../names/NameUtils';
 import { generateEncounter, generateFixedEncounter, IEncounterMonster } from './EncounterUtils';
 import { IMonsterData, MonsterType } from './Monsters';
 import { randomBlinkyToy, randomCocoonContent, randomTrinket, randomUnseenServant } from './WeirdEncounters';
@@ -104,12 +104,12 @@ export const generateHouseOccupants = (): IEncounterMonster[] => {
   const maleChildren = random(1, children);
   const femaleChildren = children - maleChildren;
 
-  const family = generateBarovianFamily(man + maleChildren, woman + femaleChildren);
+  const family = generateBarovianFamilyEncounter(NameType.Barovian, man + maleChildren, woman + femaleChildren);
 
   let countMan = 0, countWoman = 0;
 
   return family.map(m => {
-    m.gender === "male" ? countMan++ : countWoman++;
+    m.gender === Gender.male ? countMan++ : countWoman++;
     if (countMan > man || countWoman > woman)
       m.name = m.name + " (Child)"
 
@@ -139,18 +139,18 @@ export const generateVallakiCultists = () => {
   const cultists = [];
 
   for (let i = 0; i < man; i++) {
-    const name = generateMaleBorovianName();
-    const c = generateFixedEncounter(MonsterType.Cultist, 1, name, "male")
+    const name = generateMaleName(NameType.Barovian);
+    const c = generateFixedEncounter(MonsterType.Cultist, 1, name, Gender.male)
     cultists.push(c[0])
   }
 
   for (let i = 0; i < woman; i++) {
-    const name = generateFemaleBorovianName();
-    const c = generateFixedEncounter(MonsterType.Cultist, 1, name, "female")
+    const name = generateFemaleName(NameType.Barovian);
+    const c = generateFixedEncounter(MonsterType.Cultist, 1, name, Gender.female)
     cultists.push(c[0])
   }
 
-  cultists.push(...generateFixedEncounter(MonsterType.CultFanatic, 1, generateMaleBorovianName(), "male"))
+  cultists.push(...generateFixedEncounter(MonsterType.CultFanatic, 1, generateMaleName(NameType.Barovian), Gender.male))
 
   return cultists;
 }
@@ -184,17 +184,18 @@ export const generateNightTimeEncounter = () => {
   return nightTimeEncounterTable(n);
 }
 
-export const generateMaleBarovian = (familyName?: string) => generateFixedEncounter(MonsterType.Commoner, 1, generateMaleBorovianName(familyName), "Male");
-export const generateFemaleBarovian = (familyName?: string) => generateFixedEncounter(MonsterType.Commoner, 1, generateFemaleBorovianName(familyName), "Female");
-export const generateBarovianFamily = (maleCount: number, femaleCount: number) => {
+export const generateBarovianMale = (nameType: NameType, familyName?: string) => generateFixedEncounter(MonsterType.Commoner, 1, generateMaleName(nameType, familyName), Gender.male);
+export const generateBarovianFemale = (nameType: NameType, familyName?: string) => generateFixedEncounter(MonsterType.Commoner, 1, generateFemaleName(nameType, familyName), Gender.female);
+export const generateBarovianFamilyEncounter = (nameType: NameType, maleCount: number, femaleCount: number) => {
   const family = [];
-  const familyName = barovianFamilyNames[random(1, barovianFamilyNames.length - 1)];
+  const familyNames = namesArray[nameType].family;
+  const familyName = familyNames[random(1, familyNames.length - 1)];
 
   for (let i = 0; i < maleCount; i++)
-    family.push(...generateMaleBarovian(familyName));
+    family.push(...generateBarovianMale(nameType, familyName));
 
   for (let i = 0; i < femaleCount; i++)
-    family.push(...generateFemaleBarovian(familyName));
+    family.push(...generateBarovianFemale(nameType, familyName));
 
   return family;
 }

@@ -1,8 +1,9 @@
 import { Button, Checkbox, FormControl, Grid, InputLabel, MenuItem, Paper, Select, SelectChangeEvent, Slider, Table, TableBody, TableContainer, TableHead, TableRow } from '@mui/material';
 import React, { useState } from 'react';
 import { StyledTableCell, StyledTableRow } from '../components/Table';
-import { generateBarovianFamily, generateFemaleBarovian, generateMaleBarovian } from '../encounters/EncountersGenerator';
+import { generateBarovianFamilyEncounter, generateBarovianFemale, generateBarovianMale } from '../encounters/EncountersGenerator';
 import { IEncounterMonster } from '../encounters/EncounterUtils';
+import { NameType } from './NameUtils';
 
 const Names = () => {
 
@@ -16,20 +17,20 @@ const Names = () => {
   const [femaleNameCount, setFemaleNameCount] = useState(0);
   const [sameFamily, setSameFamily] = useState(false);
   const [names, setNames] = useState<IEncounterMonster[]>([]);
-  const [nameType, setNameType] = useState("barovian");
+  const [nameType, setNameType] = useState<NameType>(NameType.Barovian);
 
   const maleCountChange = (event: Event, newValue: number | number[]) => setMaleNameCount(newValue as number);
   const femaleCountChange = (event: Event, newValue: number | number[]) => setFemaleNameCount(newValue as number);
   const onSameFamilyToggle = (event: React.ChangeEvent<HTMLInputElement>) => setSameFamily(event.target.checked);
-  const onNameTypeChange = (event: SelectChangeEvent) => setNameType(event.target.value as string);
+  const onNameTypeChange = (event: SelectChangeEvent) => setNameType(event.target.value as NameType);
 
   const updateNames = () => {
     let newNames = [];
     if (sameFamily)
-      newNames = generateBarovianFamily(maleNameCount, femaleNameCount)
+      newNames = generateBarovianFamilyEncounter(nameType, maleNameCount, femaleNameCount)
     else {
-      for (let i = 0; i < maleNameCount; i++) newNames.push(generateMaleBarovian()[0]);
-      for (let i = 0; i < femaleNameCount; i++) newNames.push(generateFemaleBarovian()[0]);
+      for (let i = 0; i < maleNameCount; i++) newNames.push(generateBarovianMale(nameType)[0]);
+      for (let i = 0; i < femaleNameCount; i++) newNames.push(generateBarovianFemale(nameType)[0]);
     }
 
     setNames([...newNames, ...names]);
@@ -63,7 +64,8 @@ const Names = () => {
             <FormControl fullWidth style={{ marginBottom: "20px" }}>
               <InputLabel id="name-type-label">Name Type</InputLabel>
               <Select labelId="name-type-label" value={nameType} label="Name Type" onChange={onNameTypeChange} >
-                <MenuItem value={nameType}>Barovian Commoner</MenuItem>
+                <MenuItem value={NameType.Barovian}>{NameType.Barovian}</MenuItem>
+                <MenuItem value={NameType.Vistani}>{NameType.Vistani}</MenuItem>
               </Select>
             </FormControl>
 

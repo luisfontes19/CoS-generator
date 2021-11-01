@@ -1,15 +1,16 @@
 import { DiceType, roll } from "../DiceRoll";
+import { Gender } from "../names/NameUtils";
 import { getMonsterDataFor, MonsterType } from "./Monsters";
 
 export interface IEncounterMonster {
   name?: string;
-  gender?: string;
+  gender?: Gender;
   type: string
   hp: number;
   reference?: string
 }
 
-export const generateFixedEncounter = (monsterType: MonsterType, n = 1, encounterName?: string, gender?: string): IEncounterMonster[] => {
+export const generateFixedEncounter = (monsterType: MonsterType, n = 1, encounterName?: string, gender?: Gender): IEncounterMonster[] => {
   const res: IEncounterMonster[] = [];
   for (let i = 0; i < n; i++) {
     const m = getMonsterDataFor(monsterType)
