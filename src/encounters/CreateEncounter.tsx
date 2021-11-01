@@ -18,8 +18,9 @@ const CreateEncounter = () => {
   useEffect(() => calculateXP(), [monsters])
   useEffect(() => calculateDifficulty(), [finalXP])
   useEffect(() => {
+    let difficulties = { 0: 0, 1: 0, 2: 0, 3: 0 };
     try {
-      let difficulties = { 0: 0, 1: 0, 2: 0, 3: 0 };
+
       partyLevels.split(",").forEach(l => {
         const xps = getXPDifficultyForLevel(parseInt(l));
         difficulties[XPDificulty.EASY] += xps[XPDificulty.EASY]
@@ -27,11 +28,16 @@ const CreateEncounter = () => {
         difficulties[XPDificulty.HARD] += xps[XPDificulty.HARD]
         difficulties[XPDificulty.DEADLY] += xps[XPDificulty.DEADLY]
       });
-
       setRecommendedCombatXP(difficulties);
+      calculateDifficulty();
     }
     catch (ex) {
-      console.log(ex)
+      difficulties[XPDificulty.EASY] = 0;
+      difficulties[XPDificulty.MEDIUM] = 0;
+      difficulties[XPDificulty.HARD] = 0;
+      difficulties[XPDificulty.DEADLY] = 0;
+      setRecommendedCombatXP(difficulties);
+      calculateDifficulty();
     }
   }, [partyLevels]);
 
