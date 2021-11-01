@@ -59,9 +59,9 @@ const CreateEncounter = () => {
     else if (finalXP >= recommendedCombatXP[XPDificulty.HARD])
       diff = "Hard";
     else if (finalXP >= recommendedCombatXP[XPDificulty.MEDIUM])
-      diff = "MEDIUM";
-    else if (finalXP >= recommendedCombatXP[XPDificulty.EASY])
-      diff = "EASY";
+      diff = "Medium";
+    else
+      diff = "Easy";
 
     setDifficulty(diff);
   }
@@ -96,8 +96,8 @@ const CreateEncounter = () => {
             </TableHead>
             <TableBody>
               {
-                monsters.map(m => {
-                  return <StyledTableRow >
+                monsters.map((m, i) => {
+                  return <StyledTableRow key={i}>
                     <StyledTableCell scope="row">{m.type}</StyledTableCell>
                     <StyledTableCell scope="row">{m.xp}</StyledTableCell>
                     <StyledTableCell scope="row">{m.hp}</StyledTableCell>
@@ -115,7 +115,7 @@ const CreateEncounter = () => {
 
         <h2>Recommended Combat XP</h2>
         <TableContainer component={Paper}>
-          <Table aria-label="customized table">
+          <Table aria-label="customized table" >
             <TableHead>
               <TableRow>
                 <StyledTableCell>Difficulty</StyledTableCell>
