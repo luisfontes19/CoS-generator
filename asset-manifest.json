@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.js": "/CoS-generator/static/js/main.8673b65f.chunk.js",
-    "main.js.map": "/CoS-generator/static/js/main.8673b65f.chunk.js.map",
+    "main.js": "/CoS-generator/static/js/main.13307fe2.chunk.js",
+    "main.js.map": "/CoS-generator/static/js/main.13307fe2.chunk.js.map",
     "runtime-main.js": "/CoS-generator/static/js/runtime-main.399909bf.js",
     "runtime-main.js.map": "/CoS-generator/static/js/runtime-main.399909bf.js.map",
     "static/js/2.142efd40.chunk.js": "/CoS-generator/static/js/2.142efd40.chunk.js",
@@ -17,6 +17,6 @@
   "entrypoints": [
     "static/js/runtime-main.399909bf.js",
     "static/js/2.142efd40.chunk.js",
-    "static/js/main.8673b65f.chunk.js"
+    "static/js/main.13307fe2.chunk.js"
   ]
 }
