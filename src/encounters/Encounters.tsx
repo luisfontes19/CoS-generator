@@ -103,8 +103,8 @@ const Encounters = () => {
             <Table aria-label="customized table">
               <TableHead>
                 <TableRow>
-                  <StyledTableCell sx={{ display: { xs: 'none', sm: 'none' } }} className="hidden-small">Roll</StyledTableCell>
-                  <StyledTableCell sx={{ display: { xs: 'none', sm: 'none' } }} className="hidden-small">Day/Night</StyledTableCell>
+                  <StyledTableCell sx={{ display: { xs: 'none', sm: 'none', md: "table-cell" } }} className="hidden-small">Roll</StyledTableCell>
+                  <StyledTableCell sx={{ display: { xs: 'none', sm: 'none', md: "table-cell" } }} className="hidden-small">Day/Night</StyledTableCell>
                   <StyledTableCell>Place</StyledTableCell>
                   <StyledTableCell align="right">Details</StyledTableCell>
                 </TableRow>
@@ -112,8 +112,8 @@ const Encounters = () => {
               <TableBody>
                 {rows.map((row, i) => (
                   <StyledTableRow key={i}>
-                    <StyledTableCell sx={{ display: { xs: 'none', sm: 'none' } }} className="hidden-small">{row.roll}</StyledTableCell>
-                    <StyledTableCell sx={{ display: { xs: 'none', sm: 'none' } }} className="hidden-small">{row.day ? "Day" : "Night"}</StyledTableCell>
+                    <StyledTableCell sx={{ display: { xs: 'none', sm: 'none', md: "table-cell" } }} className="hidden-small">{row.roll}</StyledTableCell>
+                    <StyledTableCell sx={{ display: { xs: 'none', sm: 'none', md: "table-cell" } }} className="hidden-small">{row.day ? "Day" : "Night"}</StyledTableCell>
                     <StyledTableCell>{row.place}</StyledTableCell>
                     <StyledTableCell align="right">
                       {
