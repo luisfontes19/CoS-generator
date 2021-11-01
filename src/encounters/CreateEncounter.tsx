@@ -97,17 +97,15 @@ const CreateEncounter = () => {
                 <StyledTableCell>Type</StyledTableCell>
                 <StyledTableCell>XP</StyledTableCell>
                 <StyledTableCell>HP</StyledTableCell>
-                <StyledTableCell>Reference</StyledTableCell>
               </TableRow>
             </TableHead>
             <TableBody>
               {
                 monsters.map((m, i) => {
                   return <StyledTableRow key={i}>
-                    <StyledTableCell scope="row">{m.type}</StyledTableCell>
+                    <StyledTableCell scope="row"><a href={m.reference} target="_blank" rel="noreferrer">{m.type}</a></StyledTableCell>
                     <StyledTableCell scope="row">{m.xp}</StyledTableCell>
                     <StyledTableCell scope="row">{m.hp}</StyledTableCell>
-                    <StyledTableCell scope="row"><a href={m.reference} target="_blank" rel="noreferrer">Open Stats</a></StyledTableCell>
                   </StyledTableRow>
                 })
               }

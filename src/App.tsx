@@ -1,5 +1,6 @@
 import { Box, createTheme, CssBaseline, Tab, Tabs, ThemeProvider } from '@mui/material';
 import React, { useEffect } from 'react';
+import "./App.css";
 import { TabPanel } from './components/TabPanel';
 import CreateEncounter from './encounters/CreateEncounter';
 import Encounters from './encounters/Encounters';
