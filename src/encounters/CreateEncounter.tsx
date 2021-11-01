@@ -16,7 +16,7 @@ const CreateEncounter = () => {
 
 
   useEffect(() => calculateXP(), [monsters])
-  useEffect(() => calculateDifficulty(), [finalXP])
+  useEffect(() => calculateDifficulty(), [finalXP, recommendedCombatXP])
   useEffect(() => {
     let difficulties = { 0: 0, 1: 0, 2: 0, 3: 0 };
     try {
