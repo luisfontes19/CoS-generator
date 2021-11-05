@@ -1,11 +1,14 @@
-import { Autocomplete, Button, Grid, Paper, Table, TableBody, TableContainer, TableHead, TableRow, TextField } from "@mui/material";
+import AddIcon from '@mui/icons-material/Add';
+import ClearIcon from '@mui/icons-material/Clear';
+import RotateLeftIcon from '@mui/icons-material/RotateLeft';
+import { Alert, Autocomplete, Box, Button, Grid, IconButton, Paper, Table, TableBody, TableContainer, TableHead, TableRow, TextField } from "@mui/material";
 import React, { SyntheticEvent, useEffect, useState } from "react";
 import { StyledTableCell, StyledTableRow } from "../components/Table";
 import { calculateAdjustedXP, getXPDifficultyForLevel, XPDificulty } from "./EncountersGenerator";
 import { getMonsterDataFor, IMonsterData, monsterData } from "./Monsters";
-
 //https://blackcitadelrpg.com/challenge-rating-5e/
 const CreateEncounter = () => {
+
 
   const [monsterAutocompleteValue, setMonsterAutocompleteValue] = useState<IMonsterData>();
   const [monsters, setMonsters] = useState<IMonsterData[]>([]);
@@ -44,6 +47,7 @@ const CreateEncounter = () => {
   const onAutoCompleteChange = (event: SyntheticEvent, value: any) => setMonsterAutocompleteValue(value as IMonsterData)
   const onPartyLevelsChange = (e: React.ChangeEvent<HTMLInputElement>) => setPartyLevels(e.target.value);
 
+
   const SearchMonsterBox = () => {
     return (
       <Autocomplete
@@ -73,39 +77,60 @@ const CreateEncounter = () => {
   }
 
 
+  const onRemoveMonsterClick = (i: number) => {
+    return () => {
+      const newMonsters = [...monsters];
+      newMonsters.splice(i, 1);
+      setMonsters(newMonsters);
+    }
+  }
+
   const onMonsterAddClick = () => {
     if (monsterAutocompleteValue) {
       const m = getMonsterDataFor(monsterAutocompleteValue!);
+      console.log(m)
+      console.log(monsters)
+      console.log([m, ...monsters])
       setMonsters([m, ...monsters])
     }
   }
 
+  const onEncounterClearClick = () => setMonsters([])
+
   return <div>
     <Grid container spacing={2}>
       <Grid item md={8} sm={12} xs={12} order={{ md: 1, sm: 2, xs: 2 }}>
-        <div style={{ display: "flex" }}>
+        <div style={{ display: "flex", }}>
           <SearchMonsterBox />
-          <Button onClick={onMonsterAddClick} variant="contained">Add</Button>
+          <Button onClick={onMonsterAddClick} variant="contained"><AddIcon /></Button>
+          <Button onClick={onEncounterClearClick} variant="contained" color="error"><RotateLeftIcon /></Button>
         </div>
 
-        Combat XP: {finalXP} {difficulty}
-
+        <Box mt={2} mb={2}>
+          <Alert severity="info">Combat Dificulty: {difficulty}({finalXP}XP)</Alert>
+        </Box>
         <TableContainer component={Paper}>
           <Table sx={{ minWidth: 700 }} aria-label="customized table">
             <TableHead>
               <TableRow>
+                <StyledTableCell>#</StyledTableCell>
                 <StyledTableCell>Type</StyledTableCell>
                 <StyledTableCell>XP</StyledTableCell>
                 <StyledTableCell>HP</StyledTableCell>
+                <StyledTableCell></StyledTableCell>
               </TableRow>
             </TableHead>
             <TableBody>
               {
                 monsters.map((m, i) => {
                   return <StyledTableRow key={i}>
-                    <StyledTableCell scope="row"><a href={m.reference} target="_blank" rel="noreferrer">{m.type}</a></StyledTableCell>
-                    <StyledTableCell scope="row">{m.xp}</StyledTableCell>
-                    <StyledTableCell scope="row">{m.hp}</StyledTableCell>
+                    <StyledTableCell>{i + 1}</StyledTableCell>
+                    <StyledTableCell><a href={m.reference} target="_blank" rel="noreferrer">{m.type}</a></StyledTableCell>
+                    <StyledTableCell>{m.xp}</StyledTableCell>
+                    <StyledTableCell><TextField fullWidth label="HP" size="small" defaultValue={m.hp} /></StyledTableCell>
+                    <StyledTableCell width={50}>
+                      <IconButton onClick={onRemoveMonsterClick(i)}><ClearIcon /></IconButton>
+                    </StyledTableCell>
                   </StyledTableRow>
                 })
               }
@@ -153,7 +178,7 @@ const CreateEncounter = () => {
     </Grid>
 
 
-  </div>
+  </div >
 }
 
 export default CreateEncounter;
