@@ -107,7 +107,7 @@ const CreateEncounter = () => {
         </div>
 
         <Box mt={2} mb={2}>
-          <Alert severity="info">Combat Dificulty: {difficulty}({finalXP}XP)</Alert>
+          <Alert severity="info">Combat Dificulty: {difficulty} ({finalXP}XP)</Alert>
         </Box>
         <TableContainer component={Paper}>
           <Table sx={{ minWidth: 700 }} aria-label="customized table">

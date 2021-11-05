@@ -97,10 +97,10 @@ const Encounters = () => {
         <div style={styles.flexItem}><FeatureButton icon={HouseImage} text="Town Of Vallaki House" onClick={vallakiHouseClick} /></div>
       </div>
 
-      <Grid container spacing={2}>
+      <Grid container spacing={2} mt={2}>
         <Grid item md={8} sm={12} xs={12} order={{ md: 1, sm: 2, xs: 2 }}>
           <TableContainer component={Paper}>
-            <Table aria-label="customized table">
+            <Table>
               <TableHead>
                 <TableRow>
                   <StyledTableCell sx={{ display: { xs: 'none', sm: 'none', md: "table-cell" } }} className="hidden-small">Roll</StyledTableCell>

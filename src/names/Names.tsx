@@ -13,7 +13,7 @@ const Names = () => {
     }
   }
 
-  const [maleNameCount, setMaleNameCount] = useState(0);
+  const [maleNameCount, setMaleNameCount] = useState(1);
   const [femaleNameCount, setFemaleNameCount] = useState(0);
   const [sameFamily, setSameFamily] = useState(false);
   const [names, setNames] = useState<IEncounterMonster[]>([]);

@@ -1,4 +1,5 @@
 import { Box, createTheme, CssBaseline, Tab, Tabs, ThemeProvider } from '@mui/material';
+import AppBar from '@mui/material/AppBar';
 import React, { useEffect } from 'react';
 import "./App.css";
 import { TabPanel } from './components/TabPanel';
@@ -20,7 +21,7 @@ const App = () => {
 
   const theme = createTheme({
     palette: {
-      mode: 'dark',
+      //mode: 'dark',
       primary: {
         main: "#3f51b5"
       }
@@ -33,12 +34,14 @@ const App = () => {
       <CssBaseline />
       <div className="App">
         <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
-          <Tabs value={value} onChange={handleChange} variant="scrollable" scrollButtons="auto" allowScrollButtonsMobile indicatorColor="primary">
-            <Tab label="Encounter Generator" />
-            <Tab label="Name Generator" />
-            <Tab label="Fortunes Of Ravenloft" />
-            <Tab label="Create Encounter" />
-          </Tabs>
+          <AppBar position="static">
+            <Tabs value={value} onChange={handleChange} variant="scrollable" scrollButtons="auto" allowScrollButtonsMobile indicatorColor="secondary" textColor="inherit">
+              <Tab label="Encounter Generator" />
+              <Tab label="Name Generator" />
+              <Tab label="Fortunes Of Ravenloft" />
+              <Tab label="Create Encounter" />
+            </Tabs>
+          </AppBar>
         </Box>
         <TabPanel value={value} index={0}><Encounters /></TabPanel>
         <TabPanel value={value} index={1}><Names /></TabPanel>

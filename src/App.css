@@ -1,3 +1,7 @@
+body{
+  background-color: #EEE !important;
+}
+
 a, a:visited{
-  color: #DDD
+  color: #000
 }
