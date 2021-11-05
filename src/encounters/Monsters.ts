@@ -348,7 +348,8 @@ export const monsterData: IMonsterData[] = [
 ];
 
 export const getMonsterDataFor = (type: MonsterType | IMonsterData): IMonsterData => {
-  const monster = ((type as IMonsterData).xp === undefined ? monsterData.find(m => m.type === type) : type) as IMonsterData;
+  let monster = ((type as IMonsterData).xp === undefined ? monsterData.find(m => m.type === type) : type) as IMonsterData;
+  monster = { ...monster };
   monster.hp = monster.hpRoll!() + monster.hpModifier!;
 
   return monster;
