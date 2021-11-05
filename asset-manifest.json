@@ -1,25 +1,25 @@
 {
   "files": {
     "main.css": "/CoS-generator/static/css/main.bab4ce9f.chunk.css",
-    "main.js": "/CoS-generator/static/js/main.8b97e121.chunk.js",
-    "main.js.map": "/CoS-generator/static/js/main.8b97e121.chunk.js.map",
-    "runtime-main.js": "/CoS-generator/static/js/runtime-main.2fd9402e.js",
-    "runtime-main.js.map": "/CoS-generator/static/js/runtime-main.2fd9402e.js.map",
-    "static/js/2.04ea17fb.chunk.js": "/CoS-generator/static/js/2.04ea17fb.chunk.js",
-    "static/js/2.04ea17fb.chunk.js.map": "/CoS-generator/static/js/2.04ea17fb.chunk.js.map",
-    "static/js/3.141121b0.chunk.js": "/CoS-generator/static/js/3.141121b0.chunk.js",
-    "static/js/3.141121b0.chunk.js.map": "/CoS-generator/static/js/3.141121b0.chunk.js.map",
+    "main.js": "/CoS-generator/static/js/main.10a11dec.chunk.js",
+    "main.js.map": "/CoS-generator/static/js/main.10a11dec.chunk.js.map",
+    "runtime-main.js": "/CoS-generator/static/js/runtime-main.de9858df.js",
+    "runtime-main.js.map": "/CoS-generator/static/js/runtime-main.de9858df.js.map",
+    "static/js/2.1987e77c.chunk.js": "/CoS-generator/static/js/2.1987e77c.chunk.js",
+    "static/js/2.1987e77c.chunk.js.map": "/CoS-generator/static/js/2.1987e77c.chunk.js.map",
+    "static/js/3.567df38d.chunk.js": "/CoS-generator/static/js/3.567df38d.chunk.js",
+    "static/js/3.567df38d.chunk.js.map": "/CoS-generator/static/js/3.567df38d.chunk.js.map",
     "index.html": "/CoS-generator/index.html",
     "static/css/main.bab4ce9f.chunk.css.map": "/CoS-generator/static/css/main.bab4ce9f.chunk.css.map",
-    "static/js/2.04ea17fb.chunk.js.LICENSE.txt": "/CoS-generator/static/js/2.04ea17fb.chunk.js.LICENSE.txt",
+    "static/js/2.1987e77c.chunk.js.LICENSE.txt": "/CoS-generator/static/js/2.1987e77c.chunk.js.LICENSE.txt",
     "static/media/battle.1767d2e1.png": "/CoS-generator/static/media/battle.1767d2e1.png",
     "static/media/castle.f98ce2e2.png": "/CoS-generator/static/media/castle.f98ce2e2.png",
     "static/media/house.4d25ebc0.png": "/CoS-generator/static/media/house.4d25ebc0.png"
   },
   "entrypoints": [
-    "static/js/runtime-main.2fd9402e.js",
-    "static/js/2.04ea17fb.chunk.js",
+    "static/js/runtime-main.de9858df.js",
+    "static/js/2.1987e77c.chunk.js",
     "static/css/main.bab4ce9f.chunk.css",
-    "static/js/main.8b97e121.chunk.js"
+    "static/js/main.10a11dec.chunk.js"
   ]
 }
