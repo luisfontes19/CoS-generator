@@ -124,7 +124,7 @@ const CreateEncounter = () => {
                     <StyledTableCell>{i + 1}</StyledTableCell>
                     <StyledTableCell><a href={m.reference} target="_blank" rel="noreferrer">{m.type}</a></StyledTableCell>
                     <StyledTableCell>{m.xp}</StyledTableCell>
-                    <StyledTableCell><TextField fullWidth label="HP" size="small" defaultValue={m.hp} /></StyledTableCell>
+                    <StyledTableCell><TextField id={"tf" + i} fullWidth label="HP" size="small" defaultValue={m.hp} /></StyledTableCell>
                     <StyledTableCell width={50}>
                       <IconButton onClick={onRemoveMonsterClick(i)}><ClearIcon /></IconButton>
                     </StyledTableCell>
