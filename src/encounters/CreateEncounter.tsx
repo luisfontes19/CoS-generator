@@ -88,9 +88,6 @@ const CreateEncounter = () => {
   const onMonsterAddClick = () => {
     if (monsterAutocompleteValue) {
       const m = getMonsterDataFor(monsterAutocompleteValue!);
-      console.log(m)
-      console.log(monsters)
-      console.log([m, ...monsters])
       setMonsters([m, ...monsters])
     }
   }

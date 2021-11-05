@@ -210,8 +210,6 @@ export const calculateAdjustedXP = (monsters: IMonsterData[]) => {
   else if (monsters.length === 2) modifier = 1.5;
   else modifier = 1;
 
-  console.log(modifier)
-
   monsters.forEach(m => xp += m.xp!)
   xp *= modifier;
 
