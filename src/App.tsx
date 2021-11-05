@@ -40,18 +40,10 @@ const App = () => {
             <Tab label="Create Encounter" />
           </Tabs>
         </Box>
-        <TabPanel value={value} index={0}>
-          <Encounters />
-        </TabPanel>
-        <TabPanel value={value} index={1}>
-          <Names />
-        </TabPanel>
-        <TabPanel value={value} index={2}>
-          <FortunesOfRavenloft />
-        </TabPanel>
-        <TabPanel value={value} index={3}>
-          <CreateEncounter />
-        </TabPanel>
+        <TabPanel value={value} index={0}><Encounters /></TabPanel>
+        <TabPanel value={value} index={1}><Names /></TabPanel>
+        <TabPanel value={value} index={2}><FortunesOfRavenloft /></TabPanel>
+        <TabPanel value={value} index={3}><CreateEncounter /></TabPanel>
       </div>
     </ThemeProvider>
   );
