@@ -121,7 +121,7 @@ const CreateEncounter = () => {
               {
                 monsters.map((m, i) => {
                   return <StyledTableRow key={i}>
-                    <StyledTableCell>{i + 1}</StyledTableCell>
+                    <StyledTableCell>{monsters.length - i}</StyledTableCell>
                     <StyledTableCell><a href={m.reference} target="_blank" rel="noreferrer">{m.type}</a></StyledTableCell>
                     <StyledTableCell>{m.xp}</StyledTableCell>
                     <StyledTableCell><TextField id={"tf" + i} fullWidth label="HP" size="small" defaultValue={m.hp} /></StyledTableCell>
