@@ -5,3 +5,30 @@ body{
 a, a:visited{
   color: #000
 }
+
+
+@media print {
+  @page {
+    size: 330mm 427mm;
+    
+  }
+
+  .sheetContainer{
+    max-width: 100% !important;
+    width: 100% !important;
+    margin:0px;
+  }
+
+  .appBar{
+    display: none !important;
+  }
+
+  .sheetContainer{
+    padding: 0px;
+  }
+
+  .MuiBox-root {
+    background-color: #FFF;
+  }
+} 
+
