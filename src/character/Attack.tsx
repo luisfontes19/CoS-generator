@@ -18,7 +18,7 @@ const Attack = (props: CharacterProps) => {
   const onAttacksChange = (index: number, field: string) => {
     return (e: React.ChangeEvent<HTMLInputElement>) => {
       const newAttacks = [...character.attacks];
-      (newAttacks[index] as any)[field] = e.target.value;
+      newAttacks[index][field] = e.target.value;
       setCharacter({ ...character, attacks: newAttacks });
     }
   }

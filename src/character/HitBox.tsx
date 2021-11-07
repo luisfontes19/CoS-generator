@@ -29,7 +29,7 @@ const HitBox = (props: CharacterProps) => {
   const onDeathSaveChange = (type: string, position: number) => {
     return (e: React.ChangeEvent<HTMLInputElement>) => {
       const newDeathSaves = { ...character.deathSaves };
-      (newDeathSaves as any)[type][position] = e.target.checked;
+      newDeathSaves[type][position] = e.target.checked;
       setCharacter({ ...character, deathSaves: newDeathSaves })
     }
   }
@@ -72,8 +72,8 @@ const HitBox = (props: CharacterProps) => {
       </Grid>
       <Grid item md={6}>
         <Box className={classes.border} textAlign="right" mb={2} p={1} pt={1}>
-          <b>Success</b>{[1, 2, 3].map(index => <CircularCheckBox checked={(character.deathSaves.success as any)[index]} onChange={onDeathSaveChange("success", index)} />)}
-          <b>Failure</b> {[1, 2, 3].map(index => <CircularCheckBox checked={(character.deathSaves.failure as any)[index]} onChange={onDeathSaveChange("failure", index)} />)}
+          <b>Success</b>{[1, 2, 3].map(index => <CircularCheckBox checked={character.deathSaves.success[index]} onChange={onDeathSaveChange("success", index)} />)}
+          <b>Failure</b> {[1, 2, 3].map(index => <CircularCheckBox checked={character.deathSaves.failure[index]} onChange={onDeathSaveChange("failure", index)} />)}
           <Box textAlign="center">
             Death Saves
           </Box>

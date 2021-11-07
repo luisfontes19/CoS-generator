@@ -1,3 +1,4 @@
+import { ICharacter } from "./Types";
 
 export const formatModifier = (modifier: number): string => {
   return modifier >= 0 ? `+${modifier}` : `${modifier}`;
@@ -34,4 +35,25 @@ export const calculateModifier = (score: number, proficient: boolean, proficienc
     m = m + proficiencyBonus
 
   return m;
+}
+
+export const recalculateValues = (character: ICharacter, setCharacter: (char: ICharacter) => void) => {
+  //recalculate data when needed
+  const newCharacter = { ...character }
+
+  Object.keys(newCharacter.skills).forEach((k) => {
+    const skill = newCharacter.skills[k];
+    const ability = character.abilities[skill.ability];
+
+    newCharacter.skills[k].value = calculateModifier(ability, skill.proficiency, character.proficiencyBonus);
+  })
+
+  Object.keys(newCharacter.savingThrows).forEach((k) => {
+    const saving = newCharacter.savingThrows[k];
+    const ability = character.abilities[k];
+
+    newCharacter.savingThrows[k].value = calculateModifier(ability, saving.proficiency, character.proficiencyBonus);
+  })
+
+  setCharacter(newCharacter)
 }

@@ -1,6 +1,6 @@
 import { Grid } from "@mui/material";
 import { Box } from "@mui/system";
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import InputLabelGroup from "../components/InputLabelGroup";
 import Abilities from "./Abilities";
 import Attack from "./Attack";
@@ -12,47 +12,31 @@ import SavingThrows from "./SavingThrows";
 import Skills from "./Skills";
 import { useStyles } from "./styles";
 import { CharacterSheetProps } from "./Types";
-import { calculateModifier, formatModifier, parseNumber } from "./utils";
+import { formatModifier, parseNumber, recalculateValues } from "./utils";
 
 const CharacterSheet = (props: CharacterSheetProps) => {
 
   const classes = useStyles();
   const { character, setCharacter } = props;
   const charProps = { character, setCharacter };
-  const [editableSkills, setEditableSkills] = useState(true); //editable skills/savings and abilities
+  const [editableSkills, setEditableSkills] = useState(false); //TODO: IMPLEMENT SWITCH FOR THIS -> editable skills/savings and abilities 
 
   const onInspirationChange = (e: React.ChangeEvent<HTMLInputElement>) => setCharField("inspiration", e.target.value)()
   const onPassivePerceptionChange = (e: React.ChangeEvent<HTMLInputElement>) => setNumber(e.target.value, "passivePerception")
-  const onProficiencyBonusChange = (e: React.ChangeEvent<HTMLInputElement>) => setNumber(e.target.value, "proficiencyBonus")
+  const onProficiencyBonusChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const n = parseNumber(e.target.value);
+    if (n !== undefined) {
+      const newCharacter = { ...character };
+      newCharacter.proficiencyBonus = n;
+      recalculateValues(newCharacter, setCharacter);
+    }
+  }
 
   const setCharField = (field: string, value: any) => () => setCharacter({ ...character, [field]: value })
   const setNumber = (value: string, field: string) => {
     const n = parseNumber(value);
     if (n !== undefined) setCharField(field, n)()
   }
-
-  useEffect(() => {
-    const newCharacter = { ...character }
-
-    if (editableSkills) {
-      //recalculate data when needed
-      Object.keys(newCharacter.skills).forEach((k) => {
-        const skill = (newCharacter.skills as any)[k];
-        const ability = (character.abilities as any)[skill.ability];
-
-        (newCharacter.skills as any)[k].value = calculateModifier(ability, skill.proficiency, character.proficiencyBonus);
-      })
-
-      Object.keys(newCharacter.savingThrows).forEach((k) => {
-        const saving = (newCharacter.savingThrows as any)[k];
-        const ability = (character.abilities as any)[k];
-
-        (newCharacter.savingThrows as any)[k].value = calculateModifier(ability, saving.proficiency, character.proficiencyBonus);
-      })
-
-      setCharacter(newCharacter)
-    }
-  }, [character.abilities, character.skills, character.proficiencyBonus, character.savingThrows, editableSkills])
 
   // const serializeChar = () => JSON.stringify(character, null, 2);
   // const unserializeChar = (data: ICharacter) => setCharacter(data);

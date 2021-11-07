@@ -1,7 +1,7 @@
 import { Box } from "@mui/system";
 import { useStyles } from "./styles";
 import { CharacterProps } from "./Types";
-import { calculateAbilityModifier, parseNumber } from "./utils";
+import { calculateAbilityModifier, parseNumber, recalculateValues } from "./utils";
 
 export const abilitiesDefault = {
   strength: 0,
@@ -18,15 +18,16 @@ const Abilities = (props: CharacterProps) => {
   const { character, setCharacter, editable } = props;
 
   const onAbilityChange = (abilityName: string) => {
-    const value = (character.abilities as any)[abilityName];
+    const value = character.abilities[abilityName];
 
     return (e: React.ChangeEvent<HTMLInputElement>) => {
       const n = parseNumber(e.target.value);
-      if (n !== undefined)
-        setCharacter({
-          ...character,
-          abilities: { ...character.abilities, [abilityName]: n }
-        });
+      if (n !== undefined) {
+        const newCharacter = { ...character }
+        newCharacter.abilities[abilityName] = n;
+        recalculateValues(newCharacter, setCharacter);
+      }
+
     };
   }
 
@@ -34,7 +35,7 @@ const Abilities = (props: CharacterProps) => {
     <Box className={`${classes.abilityContainer} ${classes.bgContainer}`}>
       {
         Object.keys(character.abilities).map((abilityName, index) => {
-          const ability: number = (character.abilities as any)[abilityName];
+          const ability = character.abilities[abilityName];
           return <Box key={index} className={`${classes.border} ${classes.abilityBox}`}>
             {abilityName}
             <input type="text" disabled={!editable} className={classes.abilityModifierInput} value={calculateAbilityModifier(ability)} />

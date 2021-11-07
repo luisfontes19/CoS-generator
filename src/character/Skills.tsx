@@ -2,7 +2,7 @@ import { Box } from "@mui/system";
 import CircularCheckBox from "../components/CircularCheckBox";
 import { useStyles } from "./styles";
 import { CharacterProps, ISkills, Skill } from "./Types";
-import { formatModifier, parseNumber } from "./utils";
+import { formatModifier, parseNumber, recalculateValues } from "./utils";
 
 
 export const skillsDefault: ISkills = {
@@ -34,31 +34,20 @@ const Skills = (props: CharacterProps) => {
 
   const onProficiencyChange = (skillName: string) => {
     return (e: React.ChangeEvent<HTMLInputElement>) => {
-      const skill: Skill = (character.skills as any)[skillName];
-      const ability = (character.abilities as any)[skill.ability];
-
-      const newSkills = {
-        ...character.skills,
-        [skillName]: {
-          ...skill,
-          proficiency: e.target.checked,
-        }
-      }
-      setCharacter({ ...character, skills: newSkills });
+      const newCharacter = { ...character }
+      newCharacter.skills[skillName].proficiency = e.target.checked
+      recalculateValues(newCharacter, setCharacter);
     }
   };
 
   const onValueChange = (skillName: string) => {
     return (e: React.ChangeEvent<HTMLInputElement>) => {
-      const skill: Skill = (character.skills as any)[skillName];
       const n = parseNumber(e.target.value);
 
       if (n !== undefined) {
-        const newSkills = {
-          ...character.skills,
-          [skillName]: { ...skill, value: n }
-        }
-        setCharacter({ ...character, skills: newSkills });
+        const newCharacter = { ...character }
+        newCharacter.skills[skillName].value = n
+        recalculateValues(newCharacter, setCharacter);
       }
     }
   };
@@ -68,7 +57,7 @@ const Skills = (props: CharacterProps) => {
   return (<Box className={`${classes.border} ${classes.container}`}>
     {
       Object.keys(character.skills).map((skillName, i) => {
-        const skill: Skill = (character.skills as any)[skillName];
+        const skill: Skill = character.skills[skillName];
 
         return <Box key={i} className={classes.skill}>
           <CircularCheckBox checked={skill.proficiency} onChange={onProficiencyChange(skillName)} />
