@@ -13,6 +13,10 @@ a, a:visited{
     
   }
 
+  #charMenu{
+    display: none !important;
+  }
+
   .sheetContainer{
     max-width: 100% !important;
     width: 100% !important;

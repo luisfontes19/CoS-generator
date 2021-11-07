@@ -14,3 +14,11 @@ export const parseNumber = (value: string): number | undefined => {
     return undefined;
   }
 }
+
+export const download = (data: string, fileName: string) => {
+  const a = document.createElement('a');
+  const blob = new Blob([data], { 'type': "text/plain" });
+  a.href = window.URL.createObjectURL(blob);
+  a.download = fileName;
+  a.click();
+}

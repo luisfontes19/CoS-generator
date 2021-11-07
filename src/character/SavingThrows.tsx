@@ -2,26 +2,9 @@ import { Box } from "@mui/system";
 import React from "react";
 import CircularCheckBox from "../components/CircularCheckBox";
 import { useStyles } from "./styles";
+import { CharacterProps, ISavingThrow, ISavingThrows } from "./Types";
 import { formatModifier, parseNumber } from "./utils";
 
-export interface ISavingThrow {
-  value: number;
-  proficiency: boolean;
-}
-
-interface SavingThrowProps {
-  savingThrows: ISavingThrows;
-  setSavingThrows: (savings: ISavingThrows) => void;
-}
-
-export interface ISavingThrows {
-  strength: ISavingThrow,
-  dexterity: ISavingThrow,
-  constitution: ISavingThrow,
-  intelligence: ISavingThrow,
-  wisdom: ISavingThrow,
-  charisma: ISavingThrow,
-}
 
 export const defaultSavingThrows: ISavingThrows = {
   strength: { value: 0, proficiency: false },
@@ -32,40 +15,44 @@ export const defaultSavingThrows: ISavingThrows = {
   charisma: { value: 0, proficiency: false },
 }
 
-const SavingThrows = (props: SavingThrowProps) => {
+const SavingThrows = (props: CharacterProps) => {
 
   const classes = useStyles();
-  const { savingThrows, setSavingThrows } = props;
+  const { character, setCharacter } = props;
 
   const onProficiencyChange = (name: string) => {
-    const savingThrow: ISavingThrow = (savingThrows as any)[name];
+    const savingThrow: ISavingThrow = (character.savingThrows as any)[name];
 
     return (e: React.ChangeEvent<HTMLInputElement>) => {
-      setSavingThrows({
-        ...savingThrows,
+      const newSavingThrows = {
+        ...character.savingThrows,
         [name]: { ...savingThrow, proficiency: e.target.checked }
-      });
+      }
+      setCharacter({ ...character, savingThrows: newSavingThrows });
     }
   };
 
   const onValueChange = (name: string) => {
-    const savingThrow: ISavingThrow = (savingThrows as any)[name];
+    const savingThrow: ISavingThrow = (character.savingThrows as any)[name];
 
     return (e: React.ChangeEvent<HTMLInputElement>) => {
       const n = parseNumber(e.target.value);
-      if (n !== undefined)
-        setSavingThrows({
-          ...savingThrows,
+      if (n !== undefined) {
+        const newSavingThrows = {
+          ...character.savingThrows,
           [name]: { ...savingThrow, value: n }
-        });
+        }
+
+        setCharacter({ ...character, savingThrows: newSavingThrows });
+      }
     };
   };
 
   return (
     <Box className={`${classes.border} ${classes.container}`}>
       {
-        Object.keys(savingThrows).map((name, index) => {
-          const savingThrow = (savingThrows as any)[name];
+        Object.keys(character.savingThrows).map((name, index) => {
+          const savingThrow = (character.savingThrows as any)[name];
           return <Box key={index} className={classes.skill}>
             <CircularCheckBox checked={savingThrow.proficiency} onChange={onProficiencyChange(name)} />
             <input type="text" value={formatModifier(savingThrow.value)} onChange={onValueChange(name)} className={classes.skillInput} />

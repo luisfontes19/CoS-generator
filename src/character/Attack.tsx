@@ -2,37 +2,27 @@
 import { Box } from '@mui/material';
 import React from 'react';
 import { useStyles } from './styles';
+import { CharacterProps, IAttack } from './Types';
 
 
-export interface IAttack {
-  name: string;
-  damage: string;
-  bonus: string;
-}
 
 export const defaultAttack: IAttack = {
   name: "", damage: "", bonus: ""
 };
 
-export interface AttackProps {
-  attacks: IAttack[];
-  setAttacks: (attacks: IAttack[]) => void;
-  attackInfo: string;
-  setAttackInfo: (attackInfo: string) => void;
-}
 
-const Attack = (props: AttackProps) => {
+const Attack = (props: CharacterProps) => {
 
   const classes = useStyles();
-  const { attacks, setAttacks, attackInfo, setAttackInfo } = props;
+  const { character, setCharacter } = props;
 
-  const onAttackInfoChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => setAttackInfo(e.target.value)
+  const onAttackInfoChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => setCharacter({ ...character, attackInfo: e.target.value })
 
   const onAttacksChange = (index: number, field: string) => {
     return (e: React.ChangeEvent<HTMLInputElement>) => {
-      const newAttacks = [...attacks];
+      const newAttacks = [...character.attacks];
       (newAttacks[index] as any)[field] = e.target.value;
-      setAttacks(newAttacks);
+      setCharacter({ ...character, attacks: newAttacks });
     }
   }
 
@@ -44,14 +34,14 @@ const Attack = (props: AttackProps) => {
         <span style={{ width: "100%" }}>Damage</span>
       </Box>
 
-      {attacks.map((attack, index) => {
+      {character.attacks.map((attack, index) => {
         return <Box style={{ display: "flex" }}>
           <input type="text" value={attack.name} onChange={onAttacksChange(index, "name")} className={classes.attackInput} />
           <input type="text" value={attack.bonus} onChange={onAttacksChange(index, "bonus")} className={classes.attackInput} style={{ flexShrink: 1.4 }} />
           <input type="text" value={attack.damage} onChange={onAttacksChange(index, "damage")} className={classes.attackInput} />
         </Box>
       })}
-      <textarea onChange={onAttackInfoChange} className={classes.textArea} style={{ height: "190px" }} >{attackInfo}</textarea>
+      <textarea onChange={onAttackInfoChange} className={classes.textArea} style={{ height: "190px" }} >{character.attackInfo}</textarea>
     </Box>
     Attack and Spellcasting Ability
   </Box>

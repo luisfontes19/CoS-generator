@@ -1,39 +1,9 @@
 import { Box } from "@mui/system";
 import CircularCheckBox from "../components/CircularCheckBox";
 import { useStyles } from "./styles";
+import { CharacterProps, ISkills, Skill } from "./Types";
 import { formatModifier, parseNumber } from "./utils";
 
-export interface Skill {
-  value: number;
-  proficiency: boolean;
-  ability: string;
-}
-
-export interface ISkills {
-  Acrobatics: Skill;
-  "Animal Handling": Skill;
-  Arcana: Skill;
-  Athletics: Skill;
-  Deception: Skill;
-  History: Skill;
-  Insight: Skill;
-  Intimidation: Skill;
-  Investigation: Skill;
-  Medicine: Skill;
-  Nature: Skill;
-  Perception: Skill;
-  Performance: Skill;
-  Persuasion: Skill;
-  Religion: Skill;
-  SleightOfHand: Skill;
-  Stealth: Skill;
-  Survival: Skill;
-}
-
-export interface SkillProps {
-  skills: ISkills;
-  setSkills: (skills: ISkills) => void;
-}
 
 export const skillsDefault: ISkills = {
   Acrobatics: { value: 0, proficiency: false, ability: "Dex" },
@@ -56,41 +26,43 @@ export const skillsDefault: ISkills = {
   Survival: { value: 0, proficiency: false, ability: "Wis" },
 }
 
-const Skills = (props: SkillProps) => {
+const Skills = (props: CharacterProps) => {
 
   const classes = useStyles();
 
-  const { skills, setSkills } = props;
+  const { character, setCharacter } = props;
 
 
   const onProficiencyChange = (skillName: string) => {
     return (e: React.ChangeEvent<HTMLInputElement>) => {
-      const skill: Skill = (skills as any)[skillName];
-      setSkills({
-        ...skills,
+      const skill: Skill = (character.skills as any)[skillName];
+      const newSkills = {
+        ...character.skills,
         [skillName]: { ...skill, proficiency: e.target.checked }
-      });
+      }
+      setCharacter({ ...character, skills: newSkills });
     }
   };
 
   const onValueChange = (skillName: string) => {
     return (e: React.ChangeEvent<HTMLInputElement>) => {
-      const skill: Skill = (skills as any)[skillName];
+      const skill: Skill = (character.skills as any)[skillName];
       const n = parseNumber(e.target.value);
 
-      if (n !== undefined)
-        setSkills({
-          ...skills,
+      if (n !== undefined) {
+        const newSkills = {
+          ...character.skills,
           [skillName]: { ...skill, value: n }
-        });
+        }
+        setCharacter({ ...character, skills: newSkills });
+      }
     }
   };
 
   return (<Box className={`${classes.border} ${classes.container}`}>
-
     {
-      Object.keys(skills).map((skillName, i) => {
-        const skill: Skill = (skills as any)[skillName];
+      Object.keys(character.skills).map((skillName, i) => {
+        const skill: Skill = (character.skills as any)[skillName];
         return <Box key={i} className={classes.skill}>
           <CircularCheckBox checked={skill.proficiency} onChange={onProficiencyChange(skillName)} />
           <input type="text" value={formatModifier(skill.value)} onChange={onValueChange(skillName)} className={classes.skillInput} />
