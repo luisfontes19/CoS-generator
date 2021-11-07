@@ -5,7 +5,6 @@ import { useStyles } from "./styles";
 import { CharacterProps, ISavingThrow, ISavingThrows } from "./Types";
 import { formatModifier, parseNumber } from "./utils";
 
-
 export const defaultSavingThrows: ISavingThrows = {
   strength: { value: 0, proficiency: false },
   dexterity: { value: 0, proficiency: false },
@@ -18,15 +17,20 @@ export const defaultSavingThrows: ISavingThrows = {
 const SavingThrows = (props: CharacterProps) => {
 
   const classes = useStyles();
-  const { character, setCharacter } = props;
+  const { character, setCharacter, editable } = props;
 
   const onProficiencyChange = (name: string) => {
     const savingThrow: ISavingThrow = (character.savingThrows as any)[name];
+    const ability = (character.abilities as any)[name];
 
     return (e: React.ChangeEvent<HTMLInputElement>) => {
       const newSavingThrows = {
         ...character.savingThrows,
-        [name]: { ...savingThrow, proficiency: e.target.checked }
+        [name]: {
+          ...savingThrow,
+          proficiency: e.target.checked,
+        },
+
       }
       setCharacter({ ...character, savingThrows: newSavingThrows });
     }
@@ -42,7 +46,6 @@ const SavingThrows = (props: CharacterProps) => {
           ...character.savingThrows,
           [name]: { ...savingThrow, value: n }
         }
-
         setCharacter({ ...character, savingThrows: newSavingThrows });
       }
     };
@@ -55,7 +58,7 @@ const SavingThrows = (props: CharacterProps) => {
           const savingThrow = (character.savingThrows as any)[name];
           return <Box key={index} className={classes.skill}>
             <CircularCheckBox checked={savingThrow.proficiency} onChange={onProficiencyChange(name)} />
-            <input type="text" value={formatModifier(savingThrow.value)} onChange={onValueChange(name)} className={classes.skillInput} />
+            <input disabled={!editable} type="text" value={formatModifier(savingThrow.value)} onChange={onValueChange(name)} className={classes.skillInput} />
             {name}
           </Box>
         })

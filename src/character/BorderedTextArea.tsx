@@ -15,7 +15,6 @@ const BorderedTextArea = (props: BorderedTextAreaProps) => {
     <textarea onChange={onValueChange} className={classes.textArea} style={{ height: height || "75px" }}>{(character as any)[field]}</textarea>
     {label}
   </Box>
-
 };
 
 export default BorderedTextArea;

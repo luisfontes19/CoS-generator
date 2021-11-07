@@ -1,3 +1,4 @@
+
 export const formatModifier = (modifier: number): string => {
   return modifier >= 0 ? `+${modifier}` : `${modifier}`;
 }
@@ -21,4 +22,16 @@ export const download = (data: string, fileName: string) => {
   a.href = window.URL.createObjectURL(blob);
   a.download = fileName;
   a.click();
+}
+
+export const _abilityModifier = (n: number) => Math.floor((n - 10) / 2)
+export const calculateAbilityModifier = (n: number) => formatModifier(_abilityModifier(n));
+
+
+export const calculateModifier = (score: number, proficient: boolean, proficiencyBonus: number) => {
+  let m = _abilityModifier(score);
+  if (proficient)
+    m = m + proficiencyBonus
+
+  return m;
 }

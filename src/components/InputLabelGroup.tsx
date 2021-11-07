@@ -35,7 +35,7 @@ const useStyles = makeStyles(() => ({
 
 interface InputLabelGroup {
   label: string,
-  value: string,
+  value: any,
   onChange: ChangeEventHandler<HTMLInputElement>
 }
 

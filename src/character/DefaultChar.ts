@@ -1,29 +1,11 @@
 export const DefaultChar = {
   "abilities": {
-    "strength": {
-      "value": 1,
-      "modifier": 0
-    },
-    "dexterity": {
-      "value": 2,
-      "modifier": 0
-    },
-    "constitution": {
-      "value": 0,
-      "modifier": 3
-    },
-    "intelligence": {
-      "value": 0,
-      "modifier": 0
-    },
-    "wisdom": {
-      "value": 0,
-      "modifier": 0
-    },
-    "charisma": {
-      "value": 0,
-      "modifier": 0
-    }
+    "strength": 10,
+    "dexterity": 10,
+    "constitution": 10,
+    "intelligence": 10,
+    "wisdom": 10,
+    "charisma": 10,
   },
   "savingThrows": {
     "strength": {
@@ -55,92 +37,92 @@ export const DefaultChar = {
     "Acrobatics": {
       "value": 0,
       "proficiency": false,
-      "ability": "Dex"
+      "ability": "dexterity"
     },
     "Animal Handling": {
       "value": 0,
       "proficiency": false,
-      "ability": "Wis"
+      "ability": "wisdom"
     },
     "Arcana": {
       "value": 0,
       "proficiency": false,
-      "ability": "Int"
+      "ability": "intelligence"
     },
     "Athletics": {
       "value": 0,
       "proficiency": false,
-      "ability": "Str"
+      "ability": "strength"
     },
     "Deception": {
       "value": 0,
       "proficiency": false,
-      "ability": "Cha"
+      "ability": "charisma"
     },
     "History": {
       "value": 0,
       "proficiency": false,
-      "ability": "Wis"
+      "ability": "wisdom"
     },
     "Insight": {
       "value": 0,
       "proficiency": false,
-      "ability": "Wis"
+      "ability": "wisdom"
     },
     "Intimidation": {
       "value": 0,
       "proficiency": false,
-      "ability": "Cha"
+      "ability": "charisma"
     },
     "Investigation": {
       "value": 0,
       "proficiency": false,
-      "ability": "Int"
+      "ability": "intelligence"
     },
     "Medicine": {
       "value": 0,
       "proficiency": false,
-      "ability": "Wis"
+      "ability": "wisdom"
     },
     "Nature": {
       "value": 0,
       "proficiency": false,
-      "ability": "Int"
+      "ability": "intelligence"
     },
     "Perception": {
       "value": 0,
       "proficiency": false,
-      "ability": "Wis"
+      "ability": "wisdom"
     },
     "Performance": {
       "value": 0,
       "proficiency": false,
-      "ability": "Cha"
+      "ability": "charisma"
     },
     "Persuasion": {
       "value": 0,
       "proficiency": false,
-      "ability": "Cha"
+      "ability": "charisma"
     },
     "Religion": {
       "value": 0,
       "proficiency": false,
-      "ability": "Wis"
+      "ability": "wisdom"
     },
     "SleightOfHand": {
       "value": 0,
       "proficiency": false,
-      "ability": "Dex"
+      "ability": "dexterity"
     },
     "Stealth": {
       "value": 0,
       "proficiency": false,
-      "ability": "Dex"
+      "ability": "dexterity"
     },
     "Survival": {
       "value": 0,
       "proficiency": false,
-      "ability": "Wis"
+      "ability": "wisdom"
     }
   },
   "charName": "",

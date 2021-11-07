@@ -21,6 +21,9 @@ const Character = () => {
   useEffect(() => setCharsFromLocalStorage(), [])
 
   const setCharsFromLocalStorage = () => setChars(getCharsFromLocalStorage())
+  const onNewCharClick = () => setChar(DefaultChar)
+  const backupChar = () => download(JSON.stringify(char), 'character.json');
+  const backupAll = () => download(JSON.stringify(getCharsFromLocalStorage()), 'characters.json');
 
   const getCharsFromLocalStorage = () => {
     let chars;
@@ -33,8 +36,6 @@ const Character = () => {
 
     return chars;
   }
-
-  const onNewCharClick = () => setChar(DefaultChar)
 
   const saveOnLocalStorageClick = () => {
     const chars = getCharsFromLocalStorage();
@@ -52,9 +53,6 @@ const Character = () => {
     setCharsFromLocalStorage();
   }
 
-  const backupChar = () => download(JSON.stringify(char), 'character.json');
-  const backupAll = () => download(JSON.stringify(getCharsFromLocalStorage()), 'characters.json');
-
   const charOptions = <div>
     <IconButton onClick={window.print}><PictureAsPdfIcon /></IconButton>
     <Tooltip title="Download"><IconButton onClick={backupChar} ><DownloadIcon /></IconButton></Tooltip>
@@ -69,7 +67,6 @@ const Character = () => {
       <div style={{ width: "1124px", backgroundColor: "#FFF" }} className="sheetContainer">
         <CharacterSheet character={char} setCharacter={setChar} />
       </div>
-
       <div id="charMenu" style={{ flexGrow: 1, padding: "20px", paddingTop: "0px" }}>
         <Card variant="outlined">
           <AppBar position="static" >

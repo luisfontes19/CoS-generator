@@ -4,12 +4,9 @@ import React from 'react';
 import { useStyles } from './styles';
 import { CharacterProps, IAttack } from './Types';
 
-
-
 export const defaultAttack: IAttack = {
   name: "", damage: "", bonus: ""
 };
-
 
 const Attack = (props: CharacterProps) => {
 

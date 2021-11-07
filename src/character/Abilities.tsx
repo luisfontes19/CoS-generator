@@ -1,36 +1,31 @@
 import { Box } from "@mui/system";
 import { useStyles } from "./styles";
-import { CharacterProps, IAbility } from "./Types";
-import { formatModifier, parseNumber } from "./utils";
-
-
+import { CharacterProps } from "./Types";
+import { calculateAbilityModifier, parseNumber } from "./utils";
 
 export const abilitiesDefault = {
-  strength: { value: 1, modifier: 0 },
-  dexterity: { value: 2, modifier: 0 },
-  constitution: { value: 0, modifier: 3 },
-  intelligence: { value: 0, modifier: 0 },
-  wisdom: { value: 0, modifier: 0 },
-  charisma: { value: 0, modifier: 0 }
+  strength: 0,
+  dexterity: 0,
+  constitution: 0,
+  intelligence: 0,
+  wisdom: 0,
+  charisma: 0,
 }
-
 
 const Abilities = (props: CharacterProps) => {
 
   const classes = useStyles();
-  const { character, setCharacter } = props;
+  const { character, setCharacter, editable } = props;
 
-
-  const onAbilityChange = (abilityName: string, modifier = false) => {
-    const k = modifier ? "modifier" : "value";
-    const ability: IAbility = (character.abilities as any)[abilityName];
+  const onAbilityChange = (abilityName: string) => {
+    const value = (character.abilities as any)[abilityName];
 
     return (e: React.ChangeEvent<HTMLInputElement>) => {
       const n = parseNumber(e.target.value);
       if (n !== undefined)
         setCharacter({
           ...character,
-          abilities: { ...character.abilities, [abilityName]: { ...ability, [k]: n } }
+          abilities: { ...character.abilities, [abilityName]: n }
         });
     };
   }
@@ -39,15 +34,14 @@ const Abilities = (props: CharacterProps) => {
     <Box className={`${classes.abilityContainer} ${classes.bgContainer}`}>
       {
         Object.keys(character.abilities).map((abilityName, index) => {
-          const ability = (character.abilities as any)[abilityName];
+          const ability: number = (character.abilities as any)[abilityName];
           return <Box key={index} className={`${classes.border} ${classes.abilityBox}`}>
             {abilityName}
-            <input type="text" onChange={onAbilityChange(abilityName, true)} className={classes.abilityModifierInput} value={formatModifier(ability.modifier)} />
-            <input type="text" onChange={onAbilityChange(abilityName)} className={classes.abilityScoreBox} value={ability.value} />
+            <input type="text" disabled={!editable} className={classes.abilityModifierInput} value={calculateAbilityModifier(ability)} />
+            <input type="text" onChange={onAbilityChange(abilityName)} className={classes.abilityScoreBox} value={ability} />
           </Box>
         })
       }
-
     </Box>
   )
 }

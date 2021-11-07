@@ -1,16 +1,13 @@
-export interface IAbility {
-  value: number;
-  modifier: number;
+export interface AbilityArray {
+  strength: number,
+  dexterity: number,
+  constitution: number,
+  intelligence: number,
+  wisdom: number,
+  charisma: number
 }
 
-export interface AbilityArray {
-  strength: IAbility,
-  dexterity: IAbility,
-  constitution: IAbility,
-  intelligence: IAbility,
-  wisdom: IAbility,
-  charisma: IAbility
-}
+
 
 export interface IAttack {
   name: string;
@@ -42,6 +39,7 @@ export interface CharacterSheetProps {
 export interface CharacterProps {
   character: ICharacter;
   setCharacter: (character: ICharacter) => void;
+  editable?: boolean; //TODO: THIS IS IN THE WRONG PLACE
 }
 
 export interface ICharacter {

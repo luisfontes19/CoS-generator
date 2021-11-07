@@ -30,15 +30,19 @@ const Skills = (props: CharacterProps) => {
 
   const classes = useStyles();
 
-  const { character, setCharacter } = props;
-
+  const { character, setCharacter, editable } = props;
 
   const onProficiencyChange = (skillName: string) => {
     return (e: React.ChangeEvent<HTMLInputElement>) => {
       const skill: Skill = (character.skills as any)[skillName];
+      const ability = (character.abilities as any)[skill.ability];
+
       const newSkills = {
         ...character.skills,
-        [skillName]: { ...skill, proficiency: e.target.checked }
+        [skillName]: {
+          ...skill,
+          proficiency: e.target.checked,
+        }
       }
       setCharacter({ ...character, skills: newSkills });
     }
@@ -59,14 +63,17 @@ const Skills = (props: CharacterProps) => {
     }
   };
 
+  const formatAbility = (ability: string) => ability.substring(0, 1).toUpperCase() + ability.substring(1, 3);
+
   return (<Box className={`${classes.border} ${classes.container}`}>
     {
       Object.keys(character.skills).map((skillName, i) => {
         const skill: Skill = (character.skills as any)[skillName];
+
         return <Box key={i} className={classes.skill}>
           <CircularCheckBox checked={skill.proficiency} onChange={onProficiencyChange(skillName)} />
-          <input type="text" value={formatModifier(skill.value)} onChange={onValueChange(skillName)} className={classes.skillInput} />
-          {skillName} {skill.ability ? `(${skill.ability})` : ``}
+          <input disabled={!editable} type="text" value={formatModifier(skill.value)} onChange={onValueChange(skillName)} className={classes.skillInput} />
+          {skillName} ({formatAbility(skill.ability)})
         </Box>
       })
     }
