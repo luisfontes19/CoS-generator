@@ -2,7 +2,7 @@ import { Box, createTheme, CssBaseline, Tab, Tabs, ThemeProvider } from '@mui/ma
 import AppBar from '@mui/material/AppBar';
 import React, { useEffect } from 'react';
 import "./App.css";
-import Character from './Character';
+import Character from './character/Character';
 import { TabPanel } from './components/TabPanel';
 import CreateEncounter from './encounters/CreateEncounter';
 import Encounters from './encounters/Encounters';
