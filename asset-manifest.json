@@ -1,25 +1,25 @@
 {
   "files": {
     "main.css": "/CoS-generator/static/css/main.f26a9241.chunk.css",
-    "main.js": "/CoS-generator/static/js/main.e942daab.chunk.js",
-    "main.js.map": "/CoS-generator/static/js/main.e942daab.chunk.js.map",
+    "main.js": "/CoS-generator/static/js/main.ca777930.chunk.js",
+    "main.js.map": "/CoS-generator/static/js/main.ca777930.chunk.js.map",
     "runtime-main.js": "/CoS-generator/static/js/runtime-main.95e3dc2c.js",
     "runtime-main.js.map": "/CoS-generator/static/js/runtime-main.95e3dc2c.js.map",
-    "static/js/2.69288da9.chunk.js": "/CoS-generator/static/js/2.69288da9.chunk.js",
-    "static/js/2.69288da9.chunk.js.map": "/CoS-generator/static/js/2.69288da9.chunk.js.map",
+    "static/js/2.61cad7f7.chunk.js": "/CoS-generator/static/js/2.61cad7f7.chunk.js",
+    "static/js/2.61cad7f7.chunk.js.map": "/CoS-generator/static/js/2.61cad7f7.chunk.js.map",
     "static/js/3.c09c1709.chunk.js": "/CoS-generator/static/js/3.c09c1709.chunk.js",
     "static/js/3.c09c1709.chunk.js.map": "/CoS-generator/static/js/3.c09c1709.chunk.js.map",
     "index.html": "/CoS-generator/index.html",
     "static/css/main.f26a9241.chunk.css.map": "/CoS-generator/static/css/main.f26a9241.chunk.css.map",
-    "static/js/2.69288da9.chunk.js.LICENSE.txt": "/CoS-generator/static/js/2.69288da9.chunk.js.LICENSE.txt",
+    "static/js/2.61cad7f7.chunk.js.LICENSE.txt": "/CoS-generator/static/js/2.61cad7f7.chunk.js.LICENSE.txt",
     "static/media/battle.1767d2e1.png": "/CoS-generator/static/media/battle.1767d2e1.png",
     "static/media/castle.f98ce2e2.png": "/CoS-generator/static/media/castle.f98ce2e2.png",
     "static/media/house.4d25ebc0.png": "/CoS-generator/static/media/house.4d25ebc0.png"
   },
   "entrypoints": [
     "static/js/runtime-main.95e3dc2c.js",
-    "static/js/2.69288da9.chunk.js",
+    "static/js/2.61cad7f7.chunk.js",
     "static/css/main.f26a9241.chunk.css",
-    "static/js/main.e942daab.chunk.js"
+    "static/js/main.ca777930.chunk.js"
   ]
 }
