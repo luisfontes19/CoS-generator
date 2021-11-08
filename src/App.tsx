@@ -2,6 +2,7 @@ import { Box, createTheme, CssBaseline, Tab, Tabs, ThemeProvider } from '@mui/ma
 import AppBar from '@mui/material/AppBar';
 import React, { useEffect } from 'react';
 import "./App.css";
+import Character from './character/Character';
 import { TabPanel } from './components/TabPanel';
 import CreateEncounter from './encounters/CreateEncounter';
 import Encounters from './encounters/Encounters';
@@ -34,12 +35,13 @@ const App = () => {
       <CssBaseline />
       <div className="App">
         <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
-          <AppBar position="static">
+          <AppBar position="static" className="appBar">
             <Tabs value={value} onChange={handleChange} variant="scrollable" scrollButtons="auto" allowScrollButtonsMobile indicatorColor="secondary" textColor="inherit">
               <Tab label="Encounter Generator" />
               <Tab label="Name Generator" />
               <Tab label="Fortunes Of Ravenloft" />
               <Tab label="Create Encounter" />
+              <Tab label="Character sheet" />
             </Tabs>
           </AppBar>
         </Box>
@@ -47,6 +49,7 @@ const App = () => {
         <TabPanel value={value} index={1}><Names /></TabPanel>
         <TabPanel value={value} index={2}><FortunesOfRavenloft /></TabPanel>
         <TabPanel value={value} index={3}><CreateEncounter /></TabPanel>
+        <TabPanel value={value} index={4}><Character /></TabPanel>
       </div>
     </ThemeProvider>
   );
