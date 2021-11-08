@@ -1,7 +1,7 @@
 import { Box } from "@mui/system";
 import { useStyles } from "./styles";
 import { CharacterProps } from "./Types";
-import { calculateAbilityModifier, parseNumber, recalculateValues } from "./utils";
+import { calculateAbilityModifier, calculateModifier, parseNumber, recalculateValues } from "./utils";
 
 export const abilitiesDefault = {
   strength: 0,
@@ -25,7 +25,10 @@ const Abilities = (props: CharacterProps) => {
       if (n !== undefined) {
         const newCharacter = { ...character }
         newCharacter.abilities[abilityName] = n;
+        //we can set it as proficient, and send the initiativemodifier as the bonus, which by default is always 0.
+        newCharacter.initiative = calculateModifier(newCharacter.abilities.dexterity, true, newCharacter.initiativeModifier);
         recalculateValues(newCharacter, setCharacter);
+
       }
 
     };

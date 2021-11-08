@@ -58,6 +58,7 @@ export interface ICharacter {
   proficiencyBonus: number;
   ac: number;
   initiative: number;
+  initiativeModifier: number;
   speed: number;
   hitPointMaximum: string;
   currentHitPoints: string;
