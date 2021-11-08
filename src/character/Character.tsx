@@ -84,7 +84,7 @@ const Character = () => {
                 {Object.keys(chars).map((k, index) => {
                   const c = chars[k];
                   return <ListItemButton onClick={showChart(chars[k])} ><ListItem key={index} disableGutters secondaryAction={charOptions}>
-                    <ListItemText primary={c.charName} secondary={`${c.race} - ${c.classAndLevel}`} />
+                    <ListItemText primary={<b>{c.charName}</b>} secondary={`${c.race} - ${c.classAndLevel}`} />
                   </ListItem>
                   </ListItemButton>
                 })}
