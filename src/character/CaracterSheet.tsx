@@ -19,7 +19,7 @@ const CharacterSheet = (props: CharacterSheetProps) => {
   const classes = useStyles();
   const { character, setCharacter } = props;
   const charProps = { character, setCharacter };
-  const [editableSkills, setEditableSkills] = useState(false); //TODO: IMPLEMENT SWITCH FOR THIS -> editable skills/savings and abilities 
+  const [editableSkills, setEditableSkills] = useState(false); //TODO: IMPLEMENT SWITCH FOR THIS -> editable skills/savings and abilities, need to shutdown calculations on editable
 
   const onInspirationChange = (e: React.ChangeEvent<HTMLInputElement>) => setCharField("inspiration", e.target.value)()
   const onPassivePerceptionChange = (e: React.ChangeEvent<HTMLInputElement>) => setNumber(e.target.value, "passivePerception")

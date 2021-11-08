@@ -55,7 +55,7 @@ const HitBox = (props: CharacterProps) => {
     <Box className={classes.border} textAlign="center" mb={2}>
       Hit Point Maximum
       <input type="text" value={character.hitPointMaximum} onChange={onHitPointMaximumChange} className={classes.skillInput} style={{ width: "auto" }} />
-      <textarea onChange={onCurrentHitPointsChange} className={classes.textArea}>{character.currentHitPoints}</textarea>
+      <textarea onChange={onCurrentHitPointsChange} className={classes.textArea} value={character.currentHitPoints} />
       Current Hit Points
     </Box>
 
@@ -66,7 +66,7 @@ const HitBox = (props: CharacterProps) => {
         <Box className={classes.border} textAlign="center" mb={2}>
           {/* TODO: fix size of input and text area*/}
           Total <input type="text" value={character.hitDiceTotal} onChange={onHitDiceTotalChange} className={classes.skillInput} style={{ width: "90px" }} />
-          <textarea onChange={onHitDiceChange} className={classes.textArea} style={{ height: "33px" }}>{character.hitDice}</textarea>
+          <textarea onChange={onHitDiceChange} className={classes.textArea} style={{ height: "33px" }} value={character.hitDice}></textarea>
           Hit Dice
         </Box>
       </Grid>

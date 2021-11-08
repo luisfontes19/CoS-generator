@@ -34,7 +34,7 @@ const Equipment = (props: CharacterProps) => {
         <TextField style={{ marginBottom: "10px" }} value={character.pp} onChange={onPpChange} label="PP" variant="outlined" size="small" />
       </Grid>
       <Grid item md={9}>
-        <textarea onChange={onEquipmentChange} className={classes.textArea} style={{ height: "400px" }}>{character.equipment}</textarea>
+        <textarea onChange={onEquipmentChange} className={classes.textArea} style={{ height: "400px" }} value={character.equipment} />
       </Grid>
     </Grid>
     Equipment

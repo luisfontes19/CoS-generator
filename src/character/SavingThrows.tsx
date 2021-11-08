@@ -55,7 +55,7 @@ const SavingThrows = (props: CharacterProps) => {
           </Box>
         })
       }
-      <br />
+      <textarea onChange={onSavingThrowInfoChange} className={classes.textArea} style={{ fontSize: "13px", padding: "0px", height: "75px" }} value={character.savingThrowInfo} />
       Saving Throws
     </Box>
   )

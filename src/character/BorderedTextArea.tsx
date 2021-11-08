@@ -12,7 +12,7 @@ const BorderedTextArea = (props: BorderedTextAreaProps) => {
   const onValueChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => setCharacter({ ...character, [field]: e.target.value })
 
   return <Box className={classes.border} textAlign="center" mb={2} {...boxProps}>
-    <textarea onChange={onValueChange} className={classes.textArea} style={{ height: height || "75px" }}>{character[field]}</textarea>
+    <textarea onChange={onValueChange} className={classes.textArea} style={{ height: height || "75px" }} value={character[field]} />
     {label}
   </Box>
 };
