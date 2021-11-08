@@ -30,6 +30,12 @@ const SavingThrows = (props: CharacterProps) => {
     }
   };
 
+  const onSavingThrowInfoChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
+    const newCharacter = { ...character }
+    newCharacter.savingThrowInfo = e.target.value
+    setCharacter(newCharacter)
+  }
+
   const onValueChange = (name: string) => {
     const savingThrow = character.savingThrows[name];
 

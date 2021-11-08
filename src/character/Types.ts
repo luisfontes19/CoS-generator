@@ -46,6 +46,7 @@ export interface ICharacter {
   id?: string;
   abilities: AbilityArray;
   savingThrows: ISavingThrows;
+  savingThrowInfo: string;
   skills: ISkills;
   charName: string;
   classAndLevel: string;
