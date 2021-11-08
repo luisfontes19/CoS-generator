@@ -1,8 +1,8 @@
 {
   "files": {
     "main.css": "/CoS-generator/static/css/main.f26a9241.chunk.css",
-    "main.js": "/CoS-generator/static/js/main.ca777930.chunk.js",
-    "main.js.map": "/CoS-generator/static/js/main.ca777930.chunk.js.map",
+    "main.js": "/CoS-generator/static/js/main.366343df.chunk.js",
+    "main.js.map": "/CoS-generator/static/js/main.366343df.chunk.js.map",
     "runtime-main.js": "/CoS-generator/static/js/runtime-main.95e3dc2c.js",
     "runtime-main.js.map": "/CoS-generator/static/js/runtime-main.95e3dc2c.js.map",
     "static/js/2.61cad7f7.chunk.js": "/CoS-generator/static/js/2.61cad7f7.chunk.js",
@@ -20,6 +20,6 @@
     "static/js/runtime-main.95e3dc2c.js",
     "static/js/2.61cad7f7.chunk.js",
     "static/css/main.f26a9241.chunk.css",
-    "static/js/main.ca777930.chunk.js"
+    "static/js/main.366343df.chunk.js"
   ]
 }
