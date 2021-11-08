@@ -29,9 +29,11 @@ export const _abilityModifier = (n: number) => Math.floor((n - 10) / 2)
 export const calculateAbilityModifier = (n: number) => formatModifier(_abilityModifier(n));
 
 
-export const calculateModifier = (score: number, proficient: boolean, proficiencyBonus: number) => {
+export const calculateModifier = (score: number, proficient: boolean, proficiencyBonus: number, expert = false) => {
   let m = _abilityModifier(score);
-  if (proficient)
+  if (expert)
+    m = m + (proficiencyBonus * 2)
+  else if (proficient)
     m = m + proficiencyBonus
 
   return m;
@@ -45,7 +47,7 @@ export const recalculateValues = (character: ICharacter, setCharacter: (char: IC
     const skill = newCharacter.skills[k];
     const ability = character.abilities[skill.ability];
 
-    newCharacter.skills[k].value = calculateModifier(ability, skill.proficiency, character.proficiencyBonus);
+    newCharacter.skills[k].value = calculateModifier(ability, skill.proficiency, character.proficiencyBonus, skill.expert);
   })
 
   Object.keys(newCharacter.savingThrows).forEach((k) => {
@@ -54,6 +56,8 @@ export const recalculateValues = (character: ICharacter, setCharacter: (char: IC
 
     newCharacter.savingThrows[k].value = calculateModifier(ability, saving.proficiency, character.proficiencyBonus);
   })
+
+  newCharacter.passivePerception = newCharacter.skills.Perception.value + 10;
 
   setCharacter(newCharacter)
 }

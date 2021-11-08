@@ -3,8 +3,9 @@ import CircleOutlinedIcon from '@mui/icons-material/CircleOutlined';
 import { Checkbox, CheckboxProps } from '@mui/material';
 import React from "react";
 
+
 const CircularCheckBox = (props: CheckboxProps) => {
-  return <Checkbox  {...props} icon={<CircleOutlinedIcon />} checkedIcon={<CircleIcon />} size="small" style={{ padding: "0px" }} />
+  return <Checkbox  {...props} icon={<CircleOutlinedIcon />} checkedIcon={<CircleIcon />} size="small" style={{ padding: "0px", ...props.style }} />
 }
 
 export default CircularCheckBox;

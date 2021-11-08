@@ -6,24 +6,24 @@ import { formatModifier, parseNumber, recalculateValues } from "./utils";
 
 
 export const skillsDefault: ISkills = {
-  Acrobatics: { value: 0, proficiency: false, ability: "Dex" },
-  "Animal Handling": { value: 0, proficiency: false, ability: "Wis" },
-  Arcana: { value: 0, proficiency: false, ability: "Int" },
-  Athletics: { value: 0, proficiency: false, ability: "Str" },
-  Deception: { value: 0, proficiency: false, ability: "Cha" },
-  History: { value: 0, proficiency: false, ability: "Wis" },
-  Insight: { value: 0, proficiency: false, ability: "Wis" },
-  Intimidation: { value: 0, proficiency: false, ability: "Cha" },
-  Investigation: { value: 0, proficiency: false, ability: "Int" },
-  Medicine: { value: 0, proficiency: false, ability: "Wis" },
-  Nature: { value: 0, proficiency: false, ability: "Int" },
-  Perception: { value: 0, proficiency: false, ability: "Wis" },
-  Performance: { value: 0, proficiency: false, ability: "Cha" },
-  Persuasion: { value: 0, proficiency: false, ability: "Cha" },
-  Religion: { value: 0, proficiency: false, ability: "Wis" },
-  SleightOfHand: { value: 0, proficiency: false, ability: "Dex" },
-  Stealth: { value: 0, proficiency: false, ability: "Dex" },
-  Survival: { value: 0, proficiency: false, ability: "Wis" },
+  Acrobatics: { value: 0, proficiency: false, ability: "Dex", expert: false },
+  "Animal Handling": { value: 0, proficiency: false, ability: "Wis", expert: false },
+  Arcana: { value: 0, proficiency: false, ability: "Int", expert: false },
+  Athletics: { value: 0, proficiency: false, ability: "Str", expert: false },
+  Deception: { value: 0, proficiency: false, ability: "Cha", expert: false },
+  History: { value: 0, proficiency: false, ability: "Wis", expert: false },
+  Insight: { value: 0, proficiency: false, ability: "Wis", expert: false },
+  Intimidation: { value: 0, proficiency: false, ability: "Cha", expert: false },
+  Investigation: { value: 0, proficiency: false, ability: "Int", expert: false },
+  Medicine: { value: 0, proficiency: false, ability: "Wis", expert: false },
+  Nature: { value: 0, proficiency: false, ability: "Int", expert: false },
+  Perception: { value: 0, proficiency: false, ability: "Wis", expert: false },
+  Performance: { value: 0, proficiency: false, ability: "Cha", expert: false },
+  Persuasion: { value: 0, proficiency: false, ability: "Cha", expert: false },
+  Religion: { value: 0, proficiency: false, ability: "Wis", expert: false },
+  SleightOfHand: { value: 0, proficiency: false, ability: "Dex", expert: false },
+  Stealth: { value: 0, proficiency: false, ability: "Dex", expert: false },
+  Survival: { value: 0, proficiency: false, ability: "Wis", expert: false },
 }
 
 const Skills = (props: CharacterProps) => {
@@ -39,6 +39,17 @@ const Skills = (props: CharacterProps) => {
       recalculateValues(newCharacter, setCharacter);
     }
   };
+
+  const onExpertChange = (skillName: string) => {
+    return (e: React.ChangeEvent<HTMLInputElement>) => {
+      const newCharacter = { ...character }
+      newCharacter.skills[skillName].expert = e.target.checked
+
+      if (e.target.checked) newCharacter.skills[skillName].proficiency = true
+
+      recalculateValues(newCharacter, setCharacter);
+    }
+  }
 
   const onValueChange = (skillName: string) => {
     return (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -60,13 +71,15 @@ const Skills = (props: CharacterProps) => {
         const skill: Skill = character.skills[skillName];
 
         return <Box key={i} className={classes.skill}>
-          <CircularCheckBox checked={skill.proficiency} onChange={onProficiencyChange(skillName)} />
+          <div>
+            <CircularCheckBox checked={skill.proficiency} onChange={onProficiencyChange(skillName)} style={{ backgroundColor: "#FFF", zIndex: 2 }} />
+            <CircularCheckBox checked={skill.expert} onChange={onExpertChange(skillName)} style={{ zIndex: 1, marginLeft: "-12px", marginTop: "-5px", backgroundColor: "#FFF" }} />
+          </div>
           <input disabled={!editable} type="text" value={formatModifier(skill.value)} onChange={onValueChange(skillName)} className={classes.skillInput} />
           {skillName} ({formatAbility(skill.ability)})
         </Box>
       })
     }
-    <br />
     Skills
   </Box>
   )

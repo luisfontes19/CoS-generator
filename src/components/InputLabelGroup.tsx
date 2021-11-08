@@ -5,15 +5,15 @@ import React, { ChangeEventHandler } from "react";
 const useStyles = makeStyles(() => ({
   container: {
     display: "flex",
-    marginBottom: "10px",
+    marginBottom: "5px",
   },
   input: {
     textAlign: "center",
     border: "3px solid #000",
-    width: "60px",
-    height: "60px",
-    fontSize: "30px",
-    borderRadius: "60px",
+    width: "50px",
+    height: "50px",
+    fontSize: "25px",
+    borderRadius: "50px",
     zIndex: 2
   },
   label: {

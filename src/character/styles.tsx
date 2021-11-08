@@ -75,7 +75,7 @@ export const useStyles = makeStyles(() => ({
   },
   skill: {
     display: "flex",
-    fontSize: "14px"
+    fontSize: "13px",
   },
   skillInput: {
     ...hiddenInput,
@@ -101,7 +101,8 @@ export const useStyles = makeStyles(() => ({
     border: "none",
     backgroundColor: "transparent",
     fontFamily: "inherit",
-    padding: "10px"
+    padding: "10px",
+    resize: "none"
   },
   attackField: {
     padding: "5px",

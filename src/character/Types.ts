@@ -108,6 +108,7 @@ export interface ISavingThrows {
 export interface Skill {
   value: number;
   proficiency: boolean;
+  expert?: boolean,
   ability: string;
 }
 
