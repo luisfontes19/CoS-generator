@@ -8,7 +8,7 @@ import { parseNumber } from './utils';
 const Equipment = (props: CharacterProps) => {
 
   const classes = useStyles();
-  const { character, setCharacter } = props;
+  const { character, setCharacter, empty } = props;
 
   const onEpChange = (e: React.ChangeEvent<HTMLInputElement>) => setNumber(e.target.value, "ep")
   const onCpChange = (e: React.ChangeEvent<HTMLInputElement>) => setNumber(e.target.value, "cp")
@@ -27,14 +27,14 @@ const Equipment = (props: CharacterProps) => {
   return <Box className={`${classes.border} ${classes.container}`} mb={2} p={1} pt={1}>
     <Grid container spacing={2}>
       <Grid item md={3}>
-        <TextField style={{ marginBottom: "10px" }} value={character.cp} onChange={onCpChange} label="CP" variant="outlined" size="small" />
-        <TextField style={{ marginBottom: "10px" }} value={character.sp} onChange={onSpChange} label="SP" variant="outlined" size="small" />
-        <TextField style={{ marginBottom: "10px" }} value={character.ep} onChange={onEpChange} label="EP" variant="outlined" size="small" />
-        <TextField style={{ marginBottom: "10px" }} value={character.gp} onChange={onGpChange} label="GP" variant="outlined" size="small" />
-        <TextField style={{ marginBottom: "10px" }} value={character.pp} onChange={onPpChange} label="PP" variant="outlined" size="small" />
+        <TextField style={{ marginBottom: "10px" }} value={empty ? " " : character.cp} onChange={onCpChange} label="CP" variant="outlined" size="small" />
+        <TextField style={{ marginBottom: "10px" }} value={empty ? " " : character.sp} onChange={onSpChange} label="SP" variant="outlined" size="small" />
+        <TextField style={{ marginBottom: "10px" }} value={empty ? " " : character.ep} onChange={onEpChange} label="EP" variant="outlined" size="small" />
+        <TextField style={{ marginBottom: "10px" }} value={empty ? " " : character.gp} onChange={onGpChange} label="GP" variant="outlined" size="small" />
+        <TextField style={{ marginBottom: "10px" }} value={empty ? " " : character.pp} onChange={onPpChange} label="PP" variant="outlined" size="small" />
       </Grid>
       <Grid item md={9}>
-        <textarea onChange={onEquipmentChange} className={classes.textArea} style={{ height: "400px" }} value={character.equipment} />
+        <textarea onChange={onEquipmentChange} className={classes.textArea} style={{ height: "446px" }} value={character.equipment} />
       </Grid>
     </Grid>
     Equipment

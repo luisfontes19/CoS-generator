@@ -21,6 +21,8 @@ a, a:visited{
     max-width: 100% !important;
     width: 100% !important;
     margin:0px;
+    padding: 0px;
+
   }
 
   .appBar{
@@ -32,7 +34,10 @@ a, a:visited{
   }
 
   .MuiBox-root {
-    background-color: #FFF;
+    background-color:"transparent";
+  }
+  body, .bgContainer, .App{
+    background-color: #FFF
   }
 } 
 

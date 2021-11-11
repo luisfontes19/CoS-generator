@@ -2,7 +2,7 @@ import { Box, Grid } from "@mui/material";
 import { useStyles } from "./styles";
 import { CharacterProps } from "./Types";
 
-const BasicInfo = (props: CharacterProps) => {
+const SpellsHeader = (props: CharacterProps) => {
 
   const classes = useStyles();
   const { character, setCharacter } = props;
@@ -19,41 +19,25 @@ const BasicInfo = (props: CharacterProps) => {
     <Grid container>
       <Grid item md={5}>
         <Box className={classes.charNameContainer}>
-          <input type="text" className={classes.charNameInput} onChange={onCharNameChange} value={character.charName} />
-          Character's Name
+          <input type="text" className={classes.charNameInput} />
+          Spellcasting Class
         </Box>
       </Grid>
       <Grid item md={7} >
         <Grid container className={`${classes.border}`}>
           <Grid item md={4} className={classes.gridItem}>
-            <input type="text" onChange={onClassAndLevelChange} value={character.classAndLevel} className={`${classes.skillInput} ${classes.fullWidth}`} />
-            Class & Level
+            <input type="text" className={`${classes.skillInput} ${classes.fullWidth}`} />
+            SpellCasting Ability
           </Grid>
 
           <Grid item md={4} className={classes.gridItem}>
-            <input type="text" onChange={onBackgroundChange} value={character.background} className={`${classes.skillInput} ${classes.fullWidth}`} />
-            Background
+            <input type="text" className={`${classes.skillInput} ${classes.fullWidth}`} />
+            Spell Save DC
           </Grid>
 
           <Grid item md={4} className={classes.gridItem}>
-            <input type="text" onChange={onPlayerNameChange} value={character.playerName} className={`${classes.skillInput} ${classes.fullWidth}`} />
-            Player Name
-          </Grid>
-
-          <Grid item md={4} className={classes.gridItem}>
-            <input type="text" onChange={onRaceChange} value={character.race} className={`${classes.skillInput} ${classes.fullWidth}`} />
-            Race
-          </Grid>
-
-
-          <Grid item md={4} className={classes.gridItem}>
-            <input type="text" onChange={onAlignmentChange} value={character.alignment} className={`${classes.skillInput} ${classes.fullWidth}`} />
-            Alignment
-          </Grid>
-
-          <Grid item md={4} className={classes.gridItem}>
-            <input type="text" onChange={onXpChange} value={character.xp} className={`${classes.skillInput} ${classes.fullWidth}`} />
-            Experience Points
+            <input type="text" className={`${classes.skillInput} ${classes.fullWidth}`} />
+            Spell Attack Bonus
           </Grid>
         </Grid>
       </Grid>
@@ -63,4 +47,4 @@ const BasicInfo = (props: CharacterProps) => {
 
 }
 
-export default BasicInfo;
+export default SpellsHeader;

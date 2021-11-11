@@ -9,7 +9,7 @@ import { formatModifier, parseNumber } from './utils';
 
 const HitBox = (props: CharacterProps) => {
   const classes = useStyles();
-  const { character, setCharacter } = props;
+  const { character, setCharacter, empty } = props;
 
   //TODO: these 2 methods are duplicated in the CharacterSheet.tsx
   const setCharField = (field: string, value: any) => () => setCharacter({ ...character, [field]: value })
@@ -37,17 +37,17 @@ const HitBox = (props: CharacterProps) => {
   return <Box className={`${classes.bgContainer} ${classes.centerContainer}`}>
     <Box className={classes.centerContainerFirstRow}>
       <div className={`${classes.border} ${classes.centerfirstRowItem}`}>
-        <input value={character.ac} onChange={onAcChange} type="text" className={classes.abilityModifierInput} />
+        <input value={empty ? "" : character.ac} onChange={onAcChange} type="text" className={classes.abilityModifierInput} />
         AC
       </div>
 
       <div className={`${classes.border} ${classes.centerfirstRowItem}`}>
-        <input value={formatModifier(character.initiative || 0)} onChange={onInitiativeChange} type="text" className={classes.abilityModifierInput} />
+        <input value={empty ? "" : formatModifier(character.initiative || 0)} onChange={onInitiativeChange} type="text" className={classes.abilityModifierInput} />
         Initiative
       </div>
 
       <div className={`${classes.border} ${classes.centerfirstRowItem}`}>
-        <input value={character.speed} onChange={onSpeedChange} type="text" className={classes.abilityModifierInput} />
+        <input value={empty ? "" : character.speed} onChange={onSpeedChange} type="text" className={classes.abilityModifierInput} />
         Speed
       </div>
     </Box>

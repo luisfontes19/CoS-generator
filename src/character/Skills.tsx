@@ -30,13 +30,13 @@ const Skills = (props: CharacterProps) => {
 
   const classes = useStyles();
 
-  const { character, setCharacter, editable } = props;
+  const { character, setCharacter, editable, empty } = props;
 
   const onProficiencyChange = (skillName: string) => {
     return (e: React.ChangeEvent<HTMLInputElement>) => {
       const newCharacter = { ...character }
       newCharacter.skills[skillName].proficiency = e.target.checked
-      recalculateValues(newCharacter, setCharacter);
+      if (!empty) recalculateValues(newCharacter, setCharacter);
     }
   };
 
@@ -47,7 +47,7 @@ const Skills = (props: CharacterProps) => {
 
       if (e.target.checked) newCharacter.skills[skillName].proficiency = true
 
-      recalculateValues(newCharacter, setCharacter);
+      if (!empty) recalculateValues(newCharacter, setCharacter);
     }
   }
 
@@ -65,7 +65,7 @@ const Skills = (props: CharacterProps) => {
 
   const formatAbility = (ability: string) => ability.substring(0, 1).toUpperCase() + ability.substring(1, 3);
 
-  return (<Box className={`${classes.border} ${classes.container}`}>
+  return (<Box className={`${classes.border} ${classes.container}`} style={{ height: "433px" }}>
     {
       Object.keys(character.skills).map((skillName, i) => {
         const skill: Skill = character.skills[skillName];
@@ -75,13 +75,13 @@ const Skills = (props: CharacterProps) => {
             <CircularCheckBox checked={skill.proficiency} onChange={onProficiencyChange(skillName)} style={{ backgroundColor: "#FFF", zIndex: 2 }} />
             <CircularCheckBox checked={skill.expert} onChange={onExpertChange(skillName)} style={{ zIndex: 1, marginLeft: "-12px", marginTop: "-5px", backgroundColor: "#FFF" }} />
           </div>
-          <input disabled={!editable} type="text" value={formatModifier(skill.value)} onChange={onValueChange(skillName)} className={classes.skillInput} />
+          <input disabled={!editable} type="text" value={empty ? "" : formatModifier(skill.value)} onChange={onValueChange(skillName)} className={classes.skillInput} />
           {skillName} ({formatAbility(skill.ability)})
         </Box>
       })
     }
     Skills
-  </Box>
+  </Box >
   )
 }
 

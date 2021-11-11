@@ -38,7 +38,7 @@ const Attack = (props: CharacterProps) => {
           <input type="text" value={attack.damage} onChange={onAttacksChange(index, "damage")} className={classes.attackInput} />
         </Box>
       })}
-      <textarea onChange={onAttackInfoChange} className={classes.textArea} style={{ height: "190px" }} value={character.attackInfo} />
+      <textarea onChange={onAttackInfoChange} className={classes.textArea} style={{ height: "185px" }} value={character.attackInfo} />
     </Box>
     Attack and Spellcasting Ability
   </Box>

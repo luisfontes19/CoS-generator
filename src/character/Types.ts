@@ -1,3 +1,5 @@
+import { DefaultChar, SpellSlot } from "./DefaultChar";
+
 export interface AbilityArray {
   strength: number,
   dexterity: number,
@@ -33,6 +35,7 @@ export interface BorderedTextAreaProps extends CharacterSheetProps {
 export interface CharacterSheetProps {
   character: ICharacter;
   setCharacter: (character: ICharacter) => void;
+  empty?: boolean
 }
 
 
@@ -40,51 +43,10 @@ export interface CharacterProps {
   character: ICharacter;
   setCharacter: (character: ICharacter) => void;
   editable?: boolean; //TODO: THIS IS IN THE WRONG PLACE
+  empty?: boolean;
 }
 
-export interface ICharacter {
-  id?: string;
-  abilities: AbilityArray;
-  savingThrows: ISavingThrows;
-  savingThrowInfo: string;
-  skills: ISkills;
-  charName: string;
-  classAndLevel: string;
-  race: string;
-  background: string;
-  alignment: string;
-  playerName: string;
-  xp: string;
-  inspiration: string;
-  proficiencyBonus: number;
-  ac: number;
-  initiative: number;
-  initiativeModifier: number;
-  speed: number;
-  hitPointMaximum: string;
-  currentHitPoints: string;
-  temporaryHitPoints: string;
-  personalTraits: string;
-  ideals: string;
-  flaws: string;
-  bonds: string;
-  proficienciesAndLanguages: string;
-  featuresAndTraits: string;
-  passivePerception: number;
-  hitDiceTotal: string;
-  hitDice: string;
-  deathSaves: { success: { 1: boolean, 2: boolean, 3: boolean }, failure: { 1: boolean, 2: boolean, 3: boolean } };
-  attacks: IAttack[];
-  attackInfo: string;
-  equipment: string;
-  cp: number;
-  sp: number;
-  ep: number;
-  gp: number;
-  pp: number;
-}
-
-
+export type ICharacter = typeof DefaultChar;
 
 export interface ISavingThrow {
   value: number;
@@ -137,4 +99,10 @@ export interface ISkills {
 export interface SkillProps {
   skills: ISkills;
   setSkills: (skills: ISkills) => void;
+}
+
+export interface SpellLevel {
+  slots: number,
+  used: number,
+  spells: SpellSlot[]
 }

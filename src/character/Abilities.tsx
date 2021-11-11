@@ -15,7 +15,7 @@ export const abilitiesDefault = {
 const Abilities = (props: CharacterProps) => {
 
   const classes = useStyles();
-  const { character, setCharacter, editable } = props;
+  const { character, setCharacter, editable, empty } = props;
 
   const onAbilityChange = (abilityName: string) => {
     const value = character.abilities[abilityName];
@@ -27,7 +27,7 @@ const Abilities = (props: CharacterProps) => {
         newCharacter.abilities[abilityName] = n;
         //we can set it as proficient, and send the initiativemodifier as the bonus, which by default is always 0.
         newCharacter.initiative = calculateModifier(newCharacter.abilities.dexterity, true, newCharacter.initiativeModifier);
-        recalculateValues(newCharacter, setCharacter);
+        if (!empty) recalculateValues(newCharacter, setCharacter);
 
       }
 
@@ -41,8 +41,8 @@ const Abilities = (props: CharacterProps) => {
           const ability = character.abilities[abilityName];
           return <Box key={index} className={`${classes.border} ${classes.abilityBox}`}>
             {abilityName}
-            <input type="text" disabled={!editable} className={classes.abilityModifierInput} value={calculateAbilityModifier(ability)} />
-            <input type="text" onChange={onAbilityChange(abilityName)} className={classes.abilityScoreBox} value={ability} />
+            <input type="text" disabled={!editable} className={classes.abilityModifierInput} value={empty ? "" : calculateAbilityModifier(ability)} />
+            <input type="text" onChange={onAbilityChange(abilityName)} className={classes.abilityScoreBox} value={empty ? "" : ability} />
           </Box>
         })
       }

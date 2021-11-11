@@ -21,6 +21,7 @@ export const useStyles = makeStyles(() => ({
   },
   abilityContainer: {
     padding: "10px",
+    paddingTop: "20px",
     fontWeight: "bold",
     textAlign: "center",
     fontSize: "10px",
@@ -75,7 +76,8 @@ export const useStyles = makeStyles(() => ({
   },
   skill: {
     display: "flex",
-    fontSize: "13px",
+    fontSize: "12px",
+    marginBottom: "1px"
   },
   skillInput: {
     ...hiddenInput,
@@ -87,7 +89,9 @@ export const useStyles = makeStyles(() => ({
   },
   centerContainer: {
     padding: "20px",
-    marginBottom: "20px"
+    marginBottom: "20px",
+    paddingTop: "10px",
+    paddingBottom: "10px"
   },
   centerContainerFirstRow: {
     display: "flex",

@@ -1,4 +1,16 @@
+export type SpellSlot = { used: false, name: "" };
+
+const emptySpellSlots: SpellSlot[] = [];
+for (let i = 0; i < 12; i++)
+  emptySpellSlots.push({ used: false, name: "" })
+
+const emptySpellSlotsShort: SpellSlot[] = [];
+for (let i = 0; i < 8; i++)
+  emptySpellSlotsShort.push({ used: false, name: "" })
+
+
 export const DefaultChar = {
+  "id": "",
   "abilities": {
     "strength": 0,
     "dexterity": 0,
@@ -204,5 +216,17 @@ export const DefaultChar = {
   "sp": 0,
   "ep": 0,
   "gp": 0,
-  "pp": 0
+  "pp": 0,
+  "spells": {
+    "cantrips": ["", "", "", "", "", "", "", "", "", "", ""],
+    "level1": { slots: 0, used: 0, spells: emptySpellSlots },
+    "level2": { slots: 0, used: 0, spells: emptySpellSlots },
+    "level3": { slots: 0, used: 0, spells: emptySpellSlots },
+    "level4": { slots: 0, used: 0, spells: emptySpellSlots },
+    "level5": { slots: 0, used: 0, spells: emptySpellSlots },
+    "level6": { slots: 0, used: 0, spells: emptySpellSlotsShort },
+    "level7": { slots: 0, used: 0, spells: emptySpellSlotsShort },
+    "level8": { slots: 0, used: 0, spells: emptySpellSlotsShort },
+    "level9": { slots: 0, used: 0, spells: emptySpellSlotsShort },
+  },
 }

@@ -10,6 +10,7 @@ import Equipment from "./Equipment";
 import HitBox from "./HitBox";
 import SavingThrows from "./SavingThrows";
 import Skills from "./Skills";
+import Spells from "./Spells";
 import { useStyles } from "./styles";
 import { CharacterSheetProps } from "./Types";
 import { formatModifier, parseNumber, recalculateValues } from "./utils";
@@ -17,8 +18,8 @@ import { formatModifier, parseNumber, recalculateValues } from "./utils";
 const CharacterSheet = (props: CharacterSheetProps) => {
 
   const classes = useStyles();
-  const { character, setCharacter } = props;
-  const charProps = { character, setCharacter };
+  const { character, setCharacter, empty } = props;
+  const charProps = { character, setCharacter, empty };
   const [editableSkills, setEditableSkills] = useState(false); //TODO: IMPLEMENT SWITCH FOR THIS -> editable skills/savings and abilities, need to shutdown calculations on editable
 
   const onInspirationChange = (e: React.ChangeEvent<HTMLInputElement>) => setCharField("inspiration", e.target.value)()
@@ -47,7 +48,7 @@ const CharacterSheet = (props: CharacterSheetProps) => {
       <div style={{ width: "1124px", backgroundColor: "#FFF" }} className="sheetContainer">
         <Box sx={{ width: '100%' }}>
           <BasicInfo {...charProps} />
-          <Grid container spacing={2}>
+          <Grid container >
             <Grid className={classes.gridItem} item md={4} >
               <Grid container spacing={2}>
                 <Grid item md={4}>
@@ -55,14 +56,14 @@ const CharacterSheet = (props: CharacterSheetProps) => {
                 </Grid>
                 <Grid item md={8}>
                   <InputLabelGroup label="Inspiration" onChange={onInspirationChange} value={character.inspiration} />
-                  <InputLabelGroup label="Proficiency Bonus" onChange={onProficiencyBonusChange} value={formatModifier(character.proficiencyBonus)} />
+                  <InputLabelGroup label="Proficiency Bonus" onChange={onProficiencyBonusChange} value={empty ? "" : formatModifier(character.proficiencyBonus)} />
                   <SavingThrows {...charProps} editable={editableSkills} />
                   <Skills  {...charProps} editable={editableSkills} />
                 </Grid>
               </Grid>
 
-              <InputLabelGroup label="Passive Perception" onChange={onPassivePerceptionChange} value={character.passivePerception} />
-              <BorderedTextArea {...charProps} label="Other Proficiencies & Languages" field="proficienciesAndLanguages" height="450px" />
+              <InputLabelGroup label="Passive Perception" onChange={onPassivePerceptionChange} value={empty ? "" : character.passivePerception} />
+              <BorderedTextArea {...charProps} label="Other Proficiencies & Languages" field="proficienciesAndLanguages" height="466px" />
 
             </Grid>
             <Grid className={classes.gridItem} item md={4}>
@@ -81,6 +82,7 @@ const CharacterSheet = (props: CharacterSheetProps) => {
             </Grid>
           </Grid>
         </Box>
+        <Spells {...charProps} />
       </div>
       <div></div>
     </div>
