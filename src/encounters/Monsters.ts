@@ -344,7 +344,7 @@ export const monsterData: IMonsterData[] = [
   { xp: 50, type: "Broom of Animated Attack", hpRoll: _roll(5, DiceType.d6), challenge: "1/4", hpModifier: 0, reference: "https://dnd-5e.herokuapp.com/monsters/broom-of-animated-attack" },
   { xp: 10, type: "Crawling Claw", hpRoll: _roll(1, DiceType.d4), challenge: "0", hpModifier: 0, reference: "https://dnd-5e.herokuapp.com/monsters/crawling-claw" },
   { xp: 100, type: "Barovian Witch", hpRoll: _roll(3, DiceType.d8), challenge: "1/2", hpModifier: 3, reference: "https://dnd-5e.herokuapp.com/monsters/barovian-witch" },
-  { xp: 3000, type: "Strahd", hpRoll: _roll(17, DiceType.d8), challenge: "15", hpModifier: 68, reference: "https://dnd-5e.herokuapp.com/monsters/strahd-von-zarovich" },
+  { xp: 13000, type: "Strahd", hpRoll: _roll(17, DiceType.d8), challenge: "15", hpModifier: 68, reference: "https://dnd-5e.herokuapp.com/monsters/strahd-von-zarovich" },
 ];
 
 export const getMonsterDataFor = (type: MonsterType | IMonsterData): IMonsterData => {
